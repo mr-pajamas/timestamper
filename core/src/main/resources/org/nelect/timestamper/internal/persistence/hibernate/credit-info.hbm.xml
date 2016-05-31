@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.nelect.timestamper.internal.persistence.hibernate">
+  <class name="CreditInfoEntityImpl" table="credit_info">
+    <id name="id">
+      <generator class="increment" />
+    </id>
+    <!--<property name="type" type="string" length="20" not-null="true" />-->
+    <property name="type" not-null="true">
+      <type name="org.hibernate.type.EnumType">
+        <param name="enumClass">org.nelect.timestamper.internal.persistence.CreditInfoEntityType</param>
+        <param name="useNamed">true</param>
+      </type>
+    </property>
+    <property name="checkId" column="check_id" not-null="true" />
+    <property name="name" not-null="true" />
+    <property name="principal" not-null="true" />
+    <property name="registrationTime" column="registration_time" type="timestamp" />
+    <property name="attachmentName" column="attachment_name" not-null="true" />
+    <property name="attachmentPath" column="attachment_path" not-null="true" />
+    <property name="attachmentSize" column="attachment_size" not-null="true" />
+    <property name="digest" not-null="true" />
+    <property name="details" type="text" not-null="true" />
+    <property name="transactionId" column="transaction_id" />
+  </class>
+</hibernate-mapping>

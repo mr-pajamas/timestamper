@@ -1,0 +1,158 @@
+.main-container {
+    background-color: rgb(240, 232, 226);
+    padding: 40px;
+}
+
+.main-container .main-function {
+    border: 1px solid #ddd;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 10px;
+    background-color: #fff;
+    height: 178px;
+}
+
+.main-function .function-body {
+    padding-left: 120px;
+}
+
+.function-head img {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.main-container .party {
+    border: 1px solid #ddd;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    background-color: #fff;
+    height: 178px;
+}
+
+.party .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.party .query-form {
+    border-left: 1px solid darkgray;
+    height: 158px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+}
+
+.query-form p {
+    margin-top: 20px;
+}
+
+.query-form h3:first-child {
+    margin-top: 10px;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+}
+
+.party .intro {
+    padding-left: 160px;
+}
+
+#navbar {
+    background-color: #fff;
+}
+
+.navbar-brand {
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-right: 0px;
+    padding-right: 0px;
+}
+
+.footer {
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 50px;
+}
+
+.footer img {
+    margin-left: 30px;
+}
+
+.footer .copyleft {
+    text-align: center;
+    font-size: 5px;
+    margin-top: 40px
+}
+
+.footer .sitemap {
+    font-size: 15px;
+}
+
+.footer .sitemap-item {
+    padding-left: 20px;
+}
+
+.footer .sitemap-head {
+    padding-top: 10px;
+}
+
+.main-container .kexin-item {
+    border: 1px solid #ddd;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.kexin-item .item-detail {
+    height: 80px;
+    padding-top: 10px
+}
+
+.kexin-item .item-time {
+    background-color: rgb(238, 238, 238);
+    height: 80px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.main-container .kexin-detail {
+    border: 1px solid #ddd;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    background-color: #fff;
+    font-size: 20px;
+    line-height: 40px;
+    padding-top: 15px;
+}
+
+.kexin-detail td:first-child {
+    text-align: right;
+    padding-right: 20px;
+    width: 30%;
+}
+
+.footer img {
+    margin-top: -10px;
+    width: 200px;
+}
+
+#navbar a {
+    padding-left: 10px;
+}
+
+#navbar img {
+    height: 56px;
+}
+
+#navbar .logotxt {
+    font-size: 20px;
+    font-weight: 700;
+    padding-left: 8px;
+}

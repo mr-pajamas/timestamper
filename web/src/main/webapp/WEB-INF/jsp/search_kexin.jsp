@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,19 +43,32 @@
 </nav>
 
 <div class="main-container" style="margin-top: 76px; padding-top: 15px; min-height: 500px;">
-  <h2>查找企业 / 商品登记信息</h2>
-  <form class="form-horizontal" role="form" method="post">
+  <h2>查询企业信息</h2>
+  <form class="form-horizontal" action="" role="form" method="get">
     <div class="form-group" style="margin-top: 20px">
       <div class="col-md-11">
-        <input type="text" name="keywords" value="" class="form-control" placeholder="请输入登记ID或名称">
+        <input type="text" name="q" class="form-control" value="${currentQuery}" placeholder="请输入查验ID或名称">
       </div>
       <div class="col-md-1">
-        <button class="btn btn-block " type="button">查询</button>
+        <button class="btn btn-block " type="submit">查询</button>
       </div>
     </div>
   </form>
 
-  <div class="row kexin-item">
+  <c:forEach var="creditInfo" items="${creditInfos}">
+    <div class="row kexin-item">
+      <div class="col-md-9 item-detail">
+        <h4>${creditInfo.name}</h4>
+        <p>工商（或机构）注册号：95616236461234</p>
+      </div>
+      <div class="col-md-3 item-time">
+        <h4>登记时间</h4>
+        <p><fmt:formatDate value="creditInfo.registrationTime" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+      </div>
+    </div>
+  </c:forEach>
+
+  <!--<div class="row kexin-item">
     <div class="col-md-9 item-detail">
       <h4>河南金药视频有限公司</h4>
       <p>工商（或机构）注册号：95616236461234</p>
@@ -96,7 +110,7 @@
       <h4>登记时间</h4>
       <p>2016-04-16</p>
     </div>
-  </div>
+  </div>-->
 
   <div class="row" style="text-align: center; margin-top: 20px">
     <button class="btn btn-lg" type="button" style="width: 200px"><i class="icon icon-angle-down"></i> 显示更多</button>

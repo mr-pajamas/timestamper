@@ -1,5 +1,7 @@
 package org.nelect.timestamper.web;
 
+import java.util.Properties;
+
 import org.nelect.timestamper.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,4 +12,10 @@ public abstract class TimestamperController {
 
     @Autowired
     protected SessionFactory sessionFactory;
+
+    @Autowired
+    protected Properties timestamperConfig;
+
+    @Autowired
+    protected IdGenerator idGenerator;
 }

@@ -5,7 +5,11 @@ import java.util.List;
 /**
  * Created by Michael on 2016/5/30.
  */
-public interface CreditworthinessQueryService {
+public interface CreditworthinessService {
+
+    CreditInfo timestampManufacturer(CreditInfoInput input);
+
+    CreditInfo timestampProduct(CreditInfoInput input);
 
     List<CreditInfo> findManufacturers(String checkIdOrName, int offset, int limit);
 

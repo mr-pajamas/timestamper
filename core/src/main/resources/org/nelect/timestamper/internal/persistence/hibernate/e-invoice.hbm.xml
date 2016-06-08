@@ -6,17 +6,18 @@
 <hibernate-mapping package="org.nelect.timestamper.internal.persistence.hibernate">
   <class name="EInvoiceEntityImpl" table="e_invoice">
     <id name="id">
-      <generator class="increment" />
+      <generator class="uuid" />
     </id>
     <property name="checkId" column="check_id" not-null="true" />
     <property name="principal" not-null="true" />
     <property name="certNumber" column="cert_number" not-null="true" />
     <property name="registrationTime" column="registration_time" type="timestamp" />
     <property name="attachmentName" column="attachment_name" not-null="true" />
+    <property name="attachmentContentType" column="attachment_content_type" not-null="true" />
     <property name="attachmentPath" column="attachment_path" not-null="true" />
-    <property name="attachmentSize" column="attachment_size" not-null="true" />
     <property name="attachmentChecksum" column="attachment_checksum" not-null="true" />
     <property name="digest" not-null="true" />
-    <property name="transactionId" column="transaction_id" />
+    <property name="transactionId" column="transaction_id" unique="true" not-null="true" />
+    <property name="confident" />
   </class>
 </hibernate-mapping>

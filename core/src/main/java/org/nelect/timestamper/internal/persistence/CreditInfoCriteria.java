@@ -11,7 +11,7 @@ public interface CreditInfoCriteria<C extends CreditInfoCriteria<C>> {
 
     C registrationTimeExists();
 
-    C transactionIdExists();
+    C confident();
 
     C orderByRegistrationTime(boolean desc);
 }

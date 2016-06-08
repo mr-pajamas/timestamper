@@ -16,11 +16,12 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
     private String certNumber;
     private Date registrationTime;
     private String attachmentName;
+    private String attachmentContentType;
     private String attachmentPath;
-    private Long attachmentSize;
     private String attachmentChecksum;
     private String digest;
     private String transactionId;
+    private Boolean confident;
 
     @Override
     public String getId() {
@@ -77,21 +78,21 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
     }
 
     @Override
+    public String getAttachmentContentType() {
+        return attachmentContentType;
+    }
+
+    void setAttachmentContentType(String attachmentContentType) {
+        this.attachmentContentType = attachmentContentType;
+    }
+
+    @Override
     public String getAttachmentPath() {
         return attachmentPath;
     }
 
     void setAttachmentPath(String attachmentPath) {
         this.attachmentPath = attachmentPath;
-    }
-
-    @Override
-    public Long getAttachmentSize() {
-        return attachmentSize;
-    }
-
-    void setAttachmentSize(Long attachmentSize) {
-        this.attachmentSize = attachmentSize;
     }
 
     @Override
@@ -122,6 +123,15 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
     }
 
     @Override
+    public Boolean getConfident() {
+        return confident;
+    }
+
+    void setConfident(Boolean confident) {
+        this.confident = confident;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -135,11 +145,13 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
         if (registrationTime != null ? !registrationTime.equals(that.registrationTime) : that.registrationTime != null)
             return false;
         if (!attachmentName.equals(that.attachmentName)) return false;
+        if (!attachmentContentType.equals(that.attachmentContentType))
+            return false;
         if (!attachmentPath.equals(that.attachmentPath)) return false;
-        if (!attachmentSize.equals(that.attachmentSize)) return false;
         if (!attachmentChecksum.equals(that.attachmentChecksum)) return false;
         if (!digest.equals(that.digest)) return false;
-        return transactionId != null ? transactionId.equals(that.transactionId) : that.transactionId == null;
+        if (!transactionId.equals(that.transactionId)) return false;
+        return confident != null ? confident.equals(that.confident) : that.confident == null;
 
     }
 
@@ -151,11 +163,12 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
         result = 31 * result + certNumber.hashCode();
         result = 31 * result + (registrationTime != null ? registrationTime.hashCode() : 0);
         result = 31 * result + attachmentName.hashCode();
+        result = 31 * result + attachmentContentType.hashCode();
         result = 31 * result + attachmentPath.hashCode();
-        result = 31 * result + attachmentSize.hashCode();
         result = 31 * result + attachmentChecksum.hashCode();
         result = 31 * result + digest.hashCode();
-        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + transactionId.hashCode();
+        result = 31 * result + (confident != null ? confident.hashCode() : 0);
         return result;
     }
 }

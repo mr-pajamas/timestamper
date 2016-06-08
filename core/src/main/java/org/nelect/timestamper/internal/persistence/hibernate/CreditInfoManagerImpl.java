@@ -1,6 +1,5 @@
 package org.nelect.timestamper.internal.persistence.hibernate;
 
-import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +40,22 @@ class CreditInfoManagerImpl implements CreditInfoManager {
         Session session = context.getSession();
         try {
             return session.get(CreditInfoEntity.class, id);
+        } catch (RuntimeException re) {
+            failed = true;
+            throw re;
+        } finally {
+            context.releaseSession(failed);
+        }
+    }
+
+    @Override
+    public CreditInfoEntity getByTransactionId(String transactionId) {
+        boolean failed = false;
+        Session session = context.getSession();
+        try {
+            return (CreditInfoEntity) session.createCriteria(CreditInfoEntity.class)
+                .add(Restrictions.eq("transactionId", transactionId))
+                .uniqueResult();
         } catch (RuntimeException re) {
             failed = true;
             throw re;
@@ -108,21 +123,14 @@ class CreditInfoManagerImpl implements CreditInfoManager {
         }
 
         @Override
-        public CreditInfoUpdater setAttachmentFile(File file) {
-            entity.setAttachmentPath(file.getPath());
-            entity.setAttachmentSize(file.length());
+        public CreditInfoUpdater setAttachmentContentType(String attachmentContentType) {
+            entity.setAttachmentContentType(attachmentContentType);
             return this;
         }
 
         @Override
         public CreditInfoUpdater setAttachmentPath(String attachmentPath) {
             entity.setAttachmentPath(attachmentPath);
-            return this;
-        }
-
-        @Override
-        public CreditInfoUpdater setAttachmentSize(Long size) {
-            entity.setAttachmentSize(size);
             return this;
         }
 
@@ -141,6 +149,12 @@ class CreditInfoManagerImpl implements CreditInfoManager {
         @Override
         public CreditInfoUpdater setTransactionId(String transactionId) {
             entity.setTransactionId(transactionId);
+            return this;
+        }
+
+        @Override
+        public CreditInfoUpdater setConfident(Boolean confident) {
+            entity.setConfident(confident);
             return this;
         }
 
@@ -186,8 +200,8 @@ class CreditInfoManagerImpl implements CreditInfoManager {
         }
 
         @Override
-        public CreditInfoQuery transactionIdExists() {
-            criteria.add(Restrictions.isNotNull("transactionId"));
+        public CreditInfoQuery confident() {
+            criteria.add(Restrictions.eq("confident", true));
             return this;
         }
 

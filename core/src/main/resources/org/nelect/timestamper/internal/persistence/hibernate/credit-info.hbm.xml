@@ -6,7 +6,7 @@
 <hibernate-mapping package="org.nelect.timestamper.internal.persistence.hibernate">
   <class name="CreditInfoEntityImpl" table="credit_info">
     <id name="id">
-      <generator class="increment" />
+      <generator class="uuid" />
     </id>
     <!--<property name="type" type="string" length="20" not-null="true" />-->
     <property name="type" not-null="true">
@@ -20,10 +20,11 @@
     <property name="principal" not-null="true" />
     <property name="registrationTime" column="registration_time" type="timestamp" />
     <property name="attachmentName" column="attachment_name" not-null="true" />
+    <property name="attachmentContentType" column="attachment_content_type" not-null="true" />
     <property name="attachmentPath" column="attachment_path" not-null="true" />
-    <property name="attachmentSize" column="attachment_size" not-null="true" />
     <property name="digest" not-null="true" />
     <property name="details" type="text" not-null="true" />
-    <property name="transactionId" column="transaction_id" />
+    <property name="transactionId" column="transaction_id" unique="true" not-null="true" />
+    <property name="confident" />
   </class>
 </hibernate-mapping>

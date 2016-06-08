@@ -5,9 +5,6 @@ import org.nelect.timestamper.Registry;
 /**
  * Created by Michael on 2016/5/30.
  */
-public interface EInvoice extends Registry {
+public interface EInvoice extends EInvoiceInput, Registry {
 
-    String getCheckId();
-
-    String getCertNumber();
 }

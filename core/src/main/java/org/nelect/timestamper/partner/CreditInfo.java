@@ -5,11 +5,6 @@ import org.nelect.timestamper.Registry;
 /**
  * Created by Michael on 2016/5/30.
  */
-public interface CreditInfo extends Registry {
+public interface CreditInfo extends CreditInfoInput, Registry {
 
-    String getCheckId();
-
-    String getName();
-
-    String getDetails();
 }

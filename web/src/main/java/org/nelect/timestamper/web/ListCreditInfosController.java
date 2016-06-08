@@ -3,7 +3,7 @@ package org.nelect.timestamper.web;
 import java.util.List;
 
 import org.nelect.timestamper.partner.CreditInfo;
-import org.nelect.timestamper.partner.CreditworthinessQueryService;
+import org.nelect.timestamper.partner.CreditworthinessService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +21,7 @@ public class ListCreditInfosController extends TimestamperController {
                                         @RequestParam(value = "offset", required = false) Integer offset,
                                         @RequestParam(value = "limit", required = false) Integer limit) {
 
-        CreditworthinessQueryService service = sessionFactory.newSession().getCreditworthinessQueryService();
+        CreditworthinessService service = sessionFactory.newSession().getCreditworthinessService();
 
         if (offset == null) offset = 0;
         if (limit == null) limit = 10;
@@ -33,6 +33,7 @@ public class ListCreditInfosController extends TimestamperController {
 
         ModelAndView mav = new ModelAndView("search_kexin");
         mav.addObject("creditInfos", creditInfos);
+        mav.addObject("currentQuery", checkIdOrName);
 
         return mav;
     }

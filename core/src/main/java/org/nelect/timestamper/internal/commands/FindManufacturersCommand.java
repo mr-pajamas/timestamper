@@ -35,7 +35,6 @@ public class FindManufacturersCommand implements Command<List<CreditInfo>> {
             .typeIs(CreditInfoEntityType.MANUFACTURER)
             .checkIdOrNameContains(checkIdOrName)
             .registrationTimeExists()
-            .transactionIdExists()
             .orderByRegistrationTime(true);
 
         for (CreditInfoEntity creditInfoEntity : creditInfoQuery.list(offset, limit)) {

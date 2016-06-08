@@ -6,11 +6,13 @@
                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
   <import resource="classpath:org/nelect/timestamper/internal/persistence/persistence-context.xml" />
+  <import resource="classpath:org/nelect/timestamper/internal/agent/agent-context.xml" />
+
+  <util:properties id="timestamperConfig" location="classpath:timestamper.properties" />
 
   <bean id="sessionFactory" class="org.nelect.timestamper.internal.SessionFactoryImpl">
     <constructor-arg index="0" ref="contextFactory" />
-    <property name="commandContextConfig">
-      <util:properties location="classpath:timestamper.properties" />
-    </property>
+    <constructor-arg index="1" ref="timestampAgent" />
+    <property name="commandContextConfig" ref="timestamperConfig" />
   </bean>
 </beans>

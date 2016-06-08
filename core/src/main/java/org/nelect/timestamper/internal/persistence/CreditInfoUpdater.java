@@ -1,6 +1,5 @@
 package org.nelect.timestamper.internal.persistence;
 
-import java.io.File;
 import java.util.Date;
 
 /**
@@ -20,15 +19,15 @@ public interface CreditInfoUpdater extends Updater<CreditInfoEntity> {
 
     CreditInfoUpdater setAttachmentName(String attachmentName);
 
-    CreditInfoUpdater setAttachmentFile(File file);
+    CreditInfoUpdater setAttachmentContentType(String attachmentContentType);
 
     CreditInfoUpdater setAttachmentPath(String attachmentPath);
-
-    CreditInfoUpdater setAttachmentSize(Long size);
 
     CreditInfoUpdater setDigest(String digest);
 
     CreditInfoUpdater setDetails(String details);
 
     CreditInfoUpdater setTransactionId(String transactionId);
+
+    CreditInfoUpdater setConfident(Boolean confident);
 }

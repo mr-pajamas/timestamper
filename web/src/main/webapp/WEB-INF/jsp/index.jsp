@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,7 +148,7 @@
       </div>
     </div>
     <div class="col-md-7 query-form">
-      <form method="get" action="${s:mvcUrl('LCIC#listCreditInfos').arg(0, 'manufacturers').buildAndExpand()}">
+      <form method="get" action="${s:mvcUrl('LCIC#listCreditInfos').arg(0, 'manufacturers').buildAndExpand(fn:split('',','))}">
       <%--<form method="get" action="credit-info/manufacturers">--%>
       <h3>企业查询</h3>
       <div class="row">

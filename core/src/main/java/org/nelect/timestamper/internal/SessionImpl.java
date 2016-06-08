@@ -3,6 +3,7 @@ package org.nelect.timestamper.internal;
 import java.util.Properties;
 
 import org.nelect.timestamper.*;
+import org.nelect.timestamper.internal.agent.TimestampAgent;
 import org.nelect.timestamper.internal.interceptors.*;
 import org.nelect.timestamper.internal.persistence.Context;
 import org.nelect.timestamper.partner.*;
@@ -16,16 +17,19 @@ public class SessionImpl implements Session, CommandContext, CommandExecutor {
 
     private Context persistenceContext;
 
+    private TimestampAgent timestampAgent;
+
     private Properties config;
 
     private CommandExecutor executor;
     private CommandInterceptor first;
     private CommandInterceptor last;
 
-    private CreditworthinessQueryService creditworthinessQueryService;
+    private CreditworthinessService creditworthinessService;
 
-    public SessionImpl(Context persistenceContext) {
+    public SessionImpl(Context persistenceContext, TimestampAgent timestampAgent) {
         this.persistenceContext = persistenceContext;
+        this.timestampAgent = timestampAgent;
 
         executor = new CommandExecutor() {
 
@@ -80,6 +84,11 @@ public class SessionImpl implements Session, CommandContext, CommandExecutor {
     }
 
     @Override
+    public TimestampAgent getTimestampAgent() {
+        return timestampAgent;
+    }
+
+    @Override
     public <R> R execute(Command<R> command) throws TimestamperException {
         if (first != null)
             return first.execute(command);
@@ -88,11 +97,10 @@ public class SessionImpl implements Session, CommandContext, CommandExecutor {
     }
 
 
-    @Override
-    public CreditworthinessQueryService getCreditworthinessQueryService() {
-        if (creditworthinessQueryService == null)
-            creditworthinessQueryService = new CreditworthinessQueryServiceImpl(this);
-        return creditworthinessQueryService;
+    public CreditworthinessService getCreditworthinessService() {
+        if (creditworthinessService == null)
+            creditworthinessService = new CreditworthinessServiceImpl(this);
+        return creditworthinessService;
     }
 
     @Override

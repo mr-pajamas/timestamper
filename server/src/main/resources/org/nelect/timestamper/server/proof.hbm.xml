@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.nelect.timestamper.server">
+  <class name="Proof">
+    <id name="transactionId" column="tx_id" access="field" />
+    <property name="transactionPayload" type="materialized_blob" column="tx" not-null="true" />
+    <property name="merkleTreePayload" type="materialized_blob" column="merkle_tree" />
+    <property name="blockHash" column="block_hash" />
+    <!--<property name="confident" />-->
+
+  </class>
+</hibernate-mapping>

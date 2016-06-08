@@ -19,6 +19,12 @@
   </bean>
 
   <mvc:view-controller path="/" view-name="index"/>
+  <!--<mvc:view-controller path="/timestamp/credit-info" view-name="timestamp-credit-info" />-->
+  <mvc:view-controller path="/success" view-name="timestamp-success" status-code="202" />
 
   <mvc:resources mapping="/**" location="/static/" />
+
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="5242880" />
+  </bean>
 </beans>

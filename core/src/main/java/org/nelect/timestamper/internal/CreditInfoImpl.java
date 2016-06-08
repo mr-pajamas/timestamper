@@ -53,6 +53,11 @@ public class CreditInfoImpl implements CreditInfo {
             }
 
             @Override
+            public String getContentType() {
+                return entity.getAttachmentContentType();
+            }
+
+            @Override
             public File getFile() {
                 return new File(entity.getAttachmentPath());
             }
@@ -67,5 +72,10 @@ public class CreditInfoImpl implements CreditInfo {
     @Override
     public String getTransactionId() {
         return entity.getTransactionId();
+    }
+
+    @Override
+    public boolean isConfident() {
+        return entity.getConfident() != null && entity.getConfident();
     }
 }

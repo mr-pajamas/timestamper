@@ -35,7 +35,6 @@ public class FindProductsCommand implements Command<List<CreditInfo>> {
             .typeIs(CreditInfoEntityType.PRODUCT)
             .checkIdOrNameContains(checkIdOrName)
             .registrationTimeExists()
-            .transactionIdExists()
             .orderByRegistrationTime(true);
 
         for (CreditInfoEntity creditInfoEntity : creditInfoQuery.list(offset, limit)) {

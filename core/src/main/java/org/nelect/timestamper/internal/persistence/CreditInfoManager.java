@@ -5,4 +5,5 @@ package org.nelect.timestamper.internal.persistence;
  */
 public interface CreditInfoManager extends EntityManager<String, CreditInfoEntity, CreditInfoUpdater, CreditInfoQuery> {
 
+    CreditInfoEntity getByTransactionId(String transactionId);
 }

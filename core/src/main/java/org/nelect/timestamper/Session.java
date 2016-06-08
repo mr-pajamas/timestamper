@@ -9,7 +9,7 @@ public interface Session {
 
     Principal getPrincipal();
 
-    CreditworthinessQueryService getCreditworthinessQueryService();
+    CreditworthinessService getCreditworthinessService();
 
     EContractQueryService getEContractQueryService();
 

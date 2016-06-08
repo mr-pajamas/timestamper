@@ -28,6 +28,7 @@
   <modules>
     <module>core</module>
     <module>web</module>
+    <module>server</module>
     <!--<module>service</module>-->
   </modules>
 
@@ -137,6 +138,11 @@
         <artifactId>comments-core</artifactId>
         <version>${project.version}</version>
       </dependency>-->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>4.1.0.Final</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -186,6 +192,17 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources-filtered</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
     <plugins>
       <!-- compile -->
       <plugin>
@@ -271,7 +288,7 @@
         <version>2.2</version>
         <configuration>
           <port>8080</port>
-          <path>/shit</path>
+          <path>/</path>
           <uriEncoding>UTF-8</uriEncoding>
         </configuration>
       </plugin>

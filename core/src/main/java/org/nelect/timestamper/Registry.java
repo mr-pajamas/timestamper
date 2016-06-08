@@ -9,11 +9,13 @@ public interface Registry {
 
     String getPrincipalName();
 
-    Date getRegistrationTime();
-
     Attachment getAttachment();
 
     String getDigest();
 
     String getTransactionId();
+
+    Date getRegistrationTime();  // confirmed time
+
+    boolean isConfident();
 }

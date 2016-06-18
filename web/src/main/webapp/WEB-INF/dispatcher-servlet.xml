@@ -13,9 +13,9 @@
   <context:component-scan base-package="org.nelect.timestamper.web" />
 
   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-    <property name="prefix" value="/WEB-INF/jsp/"/>
-    <property name="suffix" value=".jsp"/>
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
   </bean>
 
   <mvc:view-controller path="/" view-name="index"/>

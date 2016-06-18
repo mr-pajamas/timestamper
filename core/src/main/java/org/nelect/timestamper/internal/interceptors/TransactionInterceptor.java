@@ -3,8 +3,7 @@ package org.nelect.timestamper.internal.interceptors;
 import java.lang.annotation.*;
 
 import org.nelect.timestamper.TimestamperException;
-import org.nelect.timestamper.internal.Command;
-import org.nelect.timestamper.internal.CommandInterceptor;
+import org.nelect.timestamper.internal.*;
 import org.nelect.timestamper.internal.persistence.Context;
 
 
@@ -17,22 +16,17 @@ import org.nelect.timestamper.internal.persistence.Context;
  */
 public class TransactionInterceptor extends CommandInterceptor {
 
-    private Context persistenceContext;
-
-    public TransactionInterceptor(Context persistenceContext) {
-        this.persistenceContext = persistenceContext;
-    }
-
     @Override
-    public <R> R execute(Command<R> command) throws TimestamperException {
+    public <R> R execute(Command<R> command, CommandContext context) throws TimestamperException {
+        if (!command.getClass().isAnnotationPresent(Transactional.class))
+            return next.execute(command, context);
 
-        if (command.getClass().isAnnotationPresent(NonTransactional.class))
-            return next.execute(command);
+        Context persistenceContext = context.getPersistenceContext();
 
         boolean failed = false;
         persistenceContext.beginTransaction();
         try {
-            return next.execute(command);
+            return next.execute(command, context);
         } catch (Exception e) {
             failed = true;
             try {
@@ -48,5 +42,5 @@ public class TransactionInterceptor extends CommandInterceptor {
     @Target(ElementType.TYPE)
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
-    public static @interface NonTransactional {}
+    public static @interface Transactional {}
 }

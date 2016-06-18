@@ -1,8 +1,7 @@
 package org.nelect.timestamper.internal.interceptors;
 
 import org.nelect.timestamper.TimestamperException;
-import org.nelect.timestamper.internal.Command;
-import org.nelect.timestamper.internal.CommandInterceptor;
+import org.nelect.timestamper.internal.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,20 +15,21 @@ public class LoggingInterceptor extends CommandInterceptor {
 
     private final Logger logger = LoggerFactory.getLogger(LoggingInterceptor.class);
 
-    public <R> R execute(Command<R> command) throws TimestamperException {
+    @Override
+    public <R> R execute(Command<R> command, CommandContext context) throws TimestamperException {
 
         String commandName = command.getClass().getName();
         logger.debug("Start executing command '{}'", commandName);
 
         try {
-            R returnValue = next.execute(command);
+            R returnValue = next.execute(command, context);
             logger.debug("Command '{}' is executed successfully and returns: {}",
                 commandName, returnValue);
             return returnValue;
-        } catch (TimestamperException ce) {
+        } catch (TimestamperException te) {
             logger.debug("Command '{}' execution failed, cause: {}",
-                commandName, ce.getMessage());
-            throw ce;
+                commandName, te.getMessage());
+            throw te;
         } catch (Exception e) {
             logger.error("Command '" + commandName + "' execution unexpectedly failed", e);
             throw e;

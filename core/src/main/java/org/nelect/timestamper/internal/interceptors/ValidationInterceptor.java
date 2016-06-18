@@ -5,8 +5,7 @@ import javax.validation.*;
 
 import org.hibernate.validator.HibernateValidator;
 import org.nelect.timestamper.TimestamperException;
-import org.nelect.timestamper.internal.Command;
-import org.nelect.timestamper.internal.CommandInterceptor;
+import org.nelect.timestamper.internal.*;
 
 /**
  * <p>{@link Command} parameters validation interceptor. Note that this validation
@@ -26,12 +25,13 @@ public class ValidationInterceptor extends CommandInterceptor {
 
     private Validator validator = factory.getValidator();
 
-    public <R> R execute(Command<R> command) throws TimestamperException {
+    @Override
+    public <R> R execute(Command<R> command, CommandContext context) throws TimestamperException {
 
         Set<ConstraintViolation<Command<R>>> violations = validator.validate(command);
 
         if (violations.isEmpty()) {
-            return next.execute(command);
+            return next.execute(command, context);
         } else {
             ConstraintViolation<?> violation = violations.iterator().next();
             throw new IllegalArgumentException(violation.getMessage());

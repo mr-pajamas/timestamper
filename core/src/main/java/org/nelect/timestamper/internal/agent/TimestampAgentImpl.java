@@ -1,6 +1,5 @@
 package org.nelect.timestamper.internal.agent;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.*;

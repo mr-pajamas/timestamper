@@ -22,7 +22,7 @@
     <property name="attachmentName" column="attachment_name" not-null="true" />
     <property name="attachmentContentType" column="attachment_content_type" not-null="true" />
     <property name="attachmentPath" column="attachment_path" not-null="true" />
-    <property name="digest" not-null="true" />
+    <property name="digest" not-null="true" unique="true" />
     <property name="details" type="text" not-null="true" />
     <property name="transactionId" column="transaction_id" unique="true" not-null="true" />
     <property name="confident" />

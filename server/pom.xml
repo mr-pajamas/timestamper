@@ -13,46 +13,10 @@
   <artifactId>timestamper-server</artifactId>
 
   <properties>
-    <!--<morphia.version>0.108</morphia.version>-->
-    <!--<hibernate.validator.version>5.2.4.Final</hibernate.validator.version>-->
     <hibernate.version>5.1.0.Final</hibernate.version>
   </properties>
 
   <dependencies>
-
-    <!--<dependency>
-      <groupId>javax.el</groupId>
-      <artifactId>javax.el-api</artifactId>
-      <version>2.2.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>javax.el</artifactId>
-      <version>2.2.4</version>
-    </dependency>-->
-    <!--    <dependency>
-          <groupId>javax.el</groupId>
-          <artifactId>javax.el-api</artifactId>
-          <version>2.2.4</version>
-          <scope>test</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.glassfish.web</groupId>
-          <artifactId>javax.el</artifactId>
-          <version>2.2.4</version>
-          <scope>test</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-validator</artifactId>
-          <version>${hibernate.validator.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-validator-annotation-processor</artifactId>
-          <version>${hibernate.validator.version}</version>
-          <scope>provided</scope>
-        </dependency>-->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -60,47 +24,8 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <!--<scope>test</scope>-->
+      <scope>runtime</scope>
     </dependency>
-    <!--<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-    </dependency>-->
-    <!--<dependency>
-      <groupId>org.mongodb.morphia</groupId>
-      <artifactId>morphia</artifactId>
-      <version>${morphia.version}</version>
-    </dependency>-->
-    <!--<dependency>
-      <groupId>org.mongodb.morphia</groupId>
-      <artifactId>morphia-logging-slf4j</artifactId>
-      <version>${morphia.version}</version>
-    </dependency>-->
-    <!--<dependency>
-      <groupId>cglib</groupId>
-      <artifactId>cglib-nodep</artifactId>
-      <version>[2.1_3,)</version>
-      <optional>true</optional>
-    </dependency>-->
-    <!--<dependency>
-      <groupId>com.thoughtworks.proxytoys</groupId>
-      <artifactId>proxytoys</artifactId>
-      <version>1.0</version>
-      <optional>true</optional>
-    </dependency>-->
-    <!--
-    <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-    </dependency>
-    -->
-    <!--'
-    <dependency>
-      <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.mongo</artifactId>
-      <scope>test</scope>
-    </dependency>
-    -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -140,20 +65,6 @@
     </dependency>
   </dependencies>
 
-  <!--  <build>
-      <plugins>
-        &lt;!&ndash; compile &ndash;&gt;
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <annotationProcessors>
-              <annotationProcessor>org.hibernate.validator.ap.ConstraintValidationProcessor</annotationProcessor>
-            </annotationProcessors>
-          </configuration>
-        </plugin>
-      </plugins>
-    </build>-->
   <build>
     <filters>
       <filter>src/main/filters/default-filter-values.properties</filter>

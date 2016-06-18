@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by Michael on 2016/5/31.
  */
-public abstract class TimestamperController {
+public abstract class AbstractController {
 
     @Autowired
     protected SessionFactory sessionFactory;

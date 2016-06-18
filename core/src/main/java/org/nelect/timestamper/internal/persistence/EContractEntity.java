@@ -13,13 +13,13 @@ public interface EContractEntity extends Entity<String> {
 
     String getCertNumber();
 
-    String getAttachmentName();
+/*    String getAttachmentName();
 
     String getAttachmentContentType();
 
-    String getAttachmentPath();
+    String getAttachmentPath();*/
 
-    String getAttachmentChecksum();
+    String getChecksum();
 
     String getDigest();
 

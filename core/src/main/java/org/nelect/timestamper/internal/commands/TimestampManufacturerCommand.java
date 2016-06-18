@@ -35,15 +35,22 @@ public class TimestampManufacturerCommand implements Command<CreditInfo> {
         String transactionId = agent.timestamp(digest, new ConfirmationListener() {
 
             @Override
-            public void onConfirm(String transactionId, int nConfirmations, boolean confident) {
-                if (nConfirmations == 1 || confident) {
-                    CreditInfoManager entityManager = context.getPersistenceContext().getCreditInfoManager();
-                    CreditInfoEntity entity = entityManager.getByTransactionId(transactionId);
-                    CreditInfoUpdater updater = entityManager.newUpdater(entity);
-                    if (nConfirmations == 1) updater.setRegistrationTime(new Date());
-                    updater.setConfident(confident);
-                    updater.save();
-                }
+            public void onConfirm(final String transactionId, final int nConfirmations, final boolean confident) {
+                context.getExecutor().execute(new Command<Void>() {
+
+                    @Override
+                    public Void doExecute(CommandContext context) throws TimestamperException {
+                        if (nConfirmations == 1 || confident) {
+                            CreditInfoManager entityManager = context.getPersistenceContext().getCreditInfoManager();
+                            CreditInfoEntity entity = entityManager.getByTransactionId(transactionId);
+                            CreditInfoUpdater updater = entityManager.newUpdater(entity);
+                            if (nConfirmations == 1) updater.setRegistrationTime(new Date());
+                            updater.setConfident(confident);
+                            updater.save();
+                        }
+                        return null;
+                    }
+                }, context.getContextFactory().newCommandContext());
             }
 
             @Override

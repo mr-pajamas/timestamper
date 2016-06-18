@@ -6,42 +6,44 @@ import org.nelect.timestamper.*;
 import org.nelect.timestamper.internal.agent.TimestampAgent;
 import org.nelect.timestamper.internal.interceptors.*;
 import org.nelect.timestamper.internal.persistence.Context;
+import org.nelect.timestamper.internal.persistence.ContextFactory;
 import org.nelect.timestamper.partner.*;
 
 /**
  * Created by Michael on 2016/5/31.
  */
-public class SessionImpl implements Session, CommandContext, CommandExecutor {
+public class SessionImpl implements Session, CommandExecutor, CommandContextFactory {
 
     private Principal principal;
 
-    private Context persistenceContext;
+    private ContextFactory persistenceContextFactory;
 
     private TimestampAgent timestampAgent;
 
-    private Properties config;
+    private Properties config = new Properties();
 
     private CommandExecutor executor;
     private CommandInterceptor first;
     private CommandInterceptor last;
 
     private CreditworthinessService creditworthinessService;
+    private EContractService eContractService;
 
-    public SessionImpl(Context persistenceContext, TimestampAgent timestampAgent) {
-        this.persistenceContext = persistenceContext;
+    public SessionImpl(ContextFactory persistenceContextFactory, TimestampAgent timestampAgent) {
+        this.persistenceContextFactory = persistenceContextFactory;
         this.timestampAgent = timestampAgent;
 
         executor = new CommandExecutor() {
 
             @Override
-            public <R> R execute(Command<R> command) throws TimestamperException {
-                return command.doExecute(SessionImpl.this);
+            public <R> R execute(Command<R> command, CommandContext context) throws TimestamperException {
+                return command.doExecute(context);
             }
         };
 
         addInterceptor(new LoggingInterceptor());
         addInterceptor(new ValidationInterceptor());
-        addInterceptor(new TransactionInterceptor(persistenceContext));
+        addInterceptor(new TransactionInterceptor());
     }
 
     private void addInterceptor(CommandInterceptor interceptor) {
@@ -52,12 +54,6 @@ public class SessionImpl implements Session, CommandContext, CommandExecutor {
 
         interceptor.setNext(executor);
         last = interceptor;
-    }
-
-    @Override
-    public Properties getConfig() {
-        if (config == null) config = new Properties();
-        return config;
     }
 
     public void setConfig(Properties config) {
@@ -74,42 +70,72 @@ public class SessionImpl implements Session, CommandContext, CommandExecutor {
     }
 
     @Override
-    public CommandExecutor getExecutor() {
-        return this;
-    }
-
-    @Override
-    public Context getPersistenceContext() {
-        return persistenceContext;
-    }
-
-    @Override
-    public TimestampAgent getTimestampAgent() {
-        return timestampAgent;
-    }
-
-    @Override
-    public <R> R execute(Command<R> command) throws TimestamperException {
+    public <R> R execute(Command<R> command, CommandContext context) throws TimestamperException {
         if (first != null)
-            return first.execute(command);
+            return first.execute(command, context);
         else
-            return executor.execute(command);
+            return executor.execute(command, context);
     }
 
+    @Override
+    public CommandContext newCommandContext() {
+        return new CommandContextImpl(persistenceContextFactory.newContext());
+    }
 
     public CreditworthinessService getCreditworthinessService() {
         if (creditworthinessService == null)
-            creditworthinessService = new CreditworthinessServiceImpl(this);
+            creditworthinessService = new CreditworthinessServiceImpl(this, this);
         return creditworthinessService;
     }
 
     @Override
-    public EContractQueryService getEContractQueryService() {
-        return null;
+    public EContractService getEContractService() {
+        if (eContractService == null)
+            eContractService = new EContractServiceImpl(this, this);
+        return eContractService;
     }
 
     @Override
-    public EInvoiceQueryService getEInvoiceQueryService() {
-        return null;
+    public EInvoiceService getEInvoiceService() {
+        throw new UnsupportedOperationException("尚未提供此功能");
+    }
+
+    private class CommandContextImpl implements CommandContext {
+
+        private Context persistenceContext;
+
+        CommandContextImpl(Context persistenceContext) {
+            this.persistenceContext = persistenceContext;
+        }
+
+        @Override
+        public CommandExecutor getExecutor() {
+            return SessionImpl.this;
+        }
+
+        @Override
+        public CommandContextFactory getContextFactory() {
+            return SessionImpl.this;
+        }
+
+        @Override
+        public Context getPersistenceContext() {
+            return persistenceContext;
+        }
+
+        @Override
+        public TimestampAgent getTimestampAgent() {
+            return timestampAgent;
+        }
+
+        @Override
+        public Properties getConfig() {
+            return config;
+        }
+
+        @Override
+        public Principal getPrincipal() {
+            return principal;
+        }
     }
 }

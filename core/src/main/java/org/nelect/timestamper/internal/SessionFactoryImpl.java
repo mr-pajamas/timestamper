@@ -11,14 +11,14 @@ import org.nelect.timestamper.internal.persistence.ContextFactory;
  */
 public class SessionFactoryImpl implements SessionFactory {
 
-    private final ContextFactory contextFactory;
+    private final ContextFactory persistenceContextFactory;
 
     private final TimestampAgent timestampAgent;
 
     private Properties commandContextConfig;
 
-    public SessionFactoryImpl(ContextFactory contextFactory, TimestampAgent timestampAgent) {
-        this.contextFactory = contextFactory;
+    public SessionFactoryImpl(ContextFactory persistenceContextFactory, TimestampAgent timestampAgent) {
+        this.persistenceContextFactory = persistenceContextFactory;
         this.timestampAgent = timestampAgent;
     }
 
@@ -28,7 +28,7 @@ public class SessionFactoryImpl implements SessionFactory {
 
     @Override
     public Session newSession(Principal principal) {
-        SessionImpl session = new SessionImpl(contextFactory.newContext(), timestampAgent);
+        SessionImpl session = new SessionImpl(persistenceContextFactory, timestampAgent);
         session.setPrincipal(principal);
         if (commandContextConfig != null) session.setConfig(commandContextConfig);
 
@@ -37,7 +37,7 @@ public class SessionFactoryImpl implements SessionFactory {
 
     @Override
     public Session newSession() {
-        SessionImpl session = new SessionImpl(contextFactory.newContext(), timestampAgent);
+        SessionImpl session = new SessionImpl(persistenceContextFactory, timestampAgent);
         if (commandContextConfig != null) session.setConfig(commandContextConfig);
 
         return session;

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/timestamp/credit-info")
-public class TimestampCreditInfoController extends TimestamperController {
+public class TimestampCreditInfoController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showForm() {

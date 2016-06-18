@@ -1,8 +1,7 @@
 package org.nelect.timestamper.internal.persistence.hibernate;
 
 import org.hibernate.Session;
-import org.nelect.timestamper.internal.persistence.Context;
-import org.nelect.timestamper.internal.persistence.CreditInfoManager;
+import org.nelect.timestamper.internal.persistence.*;
 
 import static org.nelect.timestamper.internal.persistence.hibernate.ContextFactoryImpl.closeQuietly;
 
@@ -16,10 +15,12 @@ class ContextImpl implements Context {
     private boolean inTransaction = false;
 
     private final CreditInfoManager creditInfoManager;
+    private final EContractManager eContractManager;
 
     ContextImpl(ContextFactoryImpl contextFactory) {
         this.contextFactory = contextFactory;
         creditInfoManager = new CreditInfoManagerImpl(this);
+        eContractManager = new EContractManagerImpl(this);
     }
 
     @Override
@@ -67,6 +68,11 @@ class ContextImpl implements Context {
     @Override
     public CreditInfoManager getCreditInfoManager() {
         return creditInfoManager;
+    }
+
+    @Override
+    public EContractManager getEContractManager() {
+        return eContractManager;
     }
 
     Session getSession() {

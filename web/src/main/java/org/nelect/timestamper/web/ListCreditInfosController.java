@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/credit-info")
-public class ListCreditInfosController extends TimestamperController {
+public class ListCreditInfosController extends AbstractController {
 
     @RequestMapping(value = "/{type}", method = RequestMethod.GET)
     public ModelAndView listCreditInfos(@PathVariable("type") String type,

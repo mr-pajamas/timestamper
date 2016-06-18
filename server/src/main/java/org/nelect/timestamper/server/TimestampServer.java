@@ -12,12 +12,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.*;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.string.*;
+import io.netty.handler.codec.string.LineEncoder;
+import io.netty.handler.codec.string.LineSeparator;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.CharsetUtil;
-import org.apache.commons.codec.*;
 import org.apache.commons.codec.binary.Hex;
 
 import static org.apache.commons.lang3.StringUtils.trimToNull;

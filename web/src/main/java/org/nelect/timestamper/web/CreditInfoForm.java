@@ -1,7 +1,5 @@
 package org.nelect.timestamper.web;
 
-import java.util.Date;
-
 /**
  * Created by Michael on 2016/6/6.
  */

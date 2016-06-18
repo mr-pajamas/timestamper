@@ -19,5 +19,5 @@ public interface CommandExecutor {
      * @throws TimestamperException when the command execution throws an
      * domain-specific exception and it's re-thrown by this executor
      */
-    <R> R execute(Command<R> command) throws TimestamperException;
+    <R> R execute(Command<R> command, CommandContext context) throws TimestamperException;
 }

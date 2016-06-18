@@ -11,7 +11,7 @@ public interface Session {
 
     CreditworthinessService getCreditworthinessService();
 
-    EContractQueryService getEContractQueryService();
+    EContractService getEContractService();
 
-    EInvoiceQueryService getEInvoiceQueryService();
+    EInvoiceService getEInvoiceService();
 }

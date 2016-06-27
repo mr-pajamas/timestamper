@@ -1,6 +1,5 @@
 .main-container {
     background-color: rgb(240, 232, 226);
-    padding: 40px;
 }
 
 .main-container .main-function {
@@ -9,17 +8,18 @@
     margin-right: 0px;
     padding: 10px;
     background-color: #fff;
-    height: 178px;
 }
 
 .main-function .function-body {
-    padding-left: 120px;
+}
+
+.main-function .function-head {
+    text-align: right;
 }
 
 .function-head img {
     width: 100px;
     height: 100px;
-    margin-top: 20px;
 }
 
 .main-container .party {
@@ -28,7 +28,6 @@
     margin-right: 0px;
     margin-top: 10px;
     background-color: #fff;
-    height: 178px;
 }
 
 .party .logo {
@@ -38,14 +37,15 @@
 
 .party .query-form {
     border-left: 1px solid darkgray;
-    height: 158px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     padding-left: 30px;
 }
 
 .query-form p {
-    margin-top: 20px;
+    padding-top: 5px;
+}
+
+.query-form button {
+    margin-top: 5px;
 }
 
 .query-form h3:first-child {

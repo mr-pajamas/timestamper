@@ -50,7 +50,7 @@
     <!-- 品牌名称或logo -->
     <a class="navbar-brand" href="#">
       <img src="<s:url value='/image/logo.png' />" alt="圆角图片">
-      <span class="logotxt">存证通</span>
+      <span class="logotxt">存证通可信数据存证服务平台</span>
     </a>
   </div>
 
@@ -61,7 +61,7 @@
       <button type="submit" class="btn btn-danger">登陆 / 注册</button>
     </form>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
-      <li><a href="#">服务价格</a></li>
+      <li><a href="#">关于我们</a></li>
       <li><a href="#">常见问题</a></li>
     </ul>
   </div><!-- END .navbar-collapse -->
@@ -142,7 +142,7 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 30px">合作单位</h2>
+  <h2 style="margin-top: 30px">合作平台</h2>
   <div class="row party with-padding">
     <div class="col-md-5 col-xs-12 row">
       <div class="col-md-3 col-xs-3 logo">
@@ -150,29 +150,29 @@
       </div>
       <div class="col-md-9 col-xs-9">
         <h3>可信平台</h3>
-        <p>电子商务可信交易监管与公共服务平台是在国家工商行政总局、国家商务部支持下，有电子商务交易技术国家工程实验室、中国电子商务可信交易服务</p>
+        <p>电子商务可信交易监管与公共服务平台是在国家工商行政总局支持下，由电子商务交易技术国家工程实验室、中国电子商务可信交易服务中心建设运营的公共服务平台，旨在建设形成规范、真实、权威、唯一的电子商务市场企业及其商品基础信息数据库，提供企业及其商品基础信息查验、共享服务，提高电子商务市场可信度。</p>
       </div>
     </div>
     <div class="col-md-7 col-xs-12 query-form with-padding">
       <form method="get" action="${s:mvcUrl('LCIC#listCreditInfos').arg(0, 'manufacturers').buildAndExpand(fn:split('',','))}">
       <%--<form method="get" action="credit-info/manufacturers">--%>
-      <h3>企业查询</h3>
+      <h3>企业查验</h3>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" name="q" class="form-control">
+          <input type="text" name="q" class="form-control" placeholder="请输入企业名称，支持模糊检索">
         </div>
         <div class="col-xs-12 col-md-2">
-          <button class="btn btn-primary btn-block" type="submit">查询</button>
+          <button class="btn btn-primary btn-block" type="submit">查验</button>
         </div>
       </div>
       </form>
-      <h3>商品查询</h3>
+      <h3>商品查验</h3>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="请输入商品名称，支持模糊检索">>
         </div>
         <div class="col-xs-12 col-md-2">
-          <button class="btn btn-primary btn-block" type="button">查询</button>
+          <button class="btn btn-primary btn-block" type="button">查验</button>
         </div>
       </div>
     </div>
@@ -184,22 +184,21 @@
         <img src="<s:url value='/image/zhongqian-logo.png' />" class="img-rounded" alt="圆角图片">
       </div>
       <div class="col-md-9 col-xs-9">
-        <h3>众签电子合同</h3>
-        <p>众签电子合同综合服务平台是在电子商务交易技术国家工程实验室指导下，有北京智汇信元信息技术有限公司建设运营的服务平台，
-          平台致力于提供当前中国网络市场升级发展亟需的互联网合约服务</p>
+        <h3>众签电子合同服务平台</h3>
+        <p>众签是在电子商务交易技术国家工程实验室指导下，由北京众签科技有限公司研发，为企业、机构、个人提供合同管理、在线签署、证据保全的电子合同服务平台。平台旨在通过安全、有效、便捷的电子合同全流程服务帮助用户提高合同签署效率，降低合同管理成本。</p>
       </div>
     </div>
     <div class="col-xs-12 col-md-7 query-form">
-      <h3>电子合同查询</h3>
+      <h3>电子合同查验</h3>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="请输入完整的电子合同编号">
         </div>
         <div class="col-xs-12 col-md-2">
           <button class="btn btn-primary btn-block" type="button">查询</button>
         </div>
       </div>
-      <p>你也可以通过上传文件查询</p>
+      <p>您也可以上传电子合同文件查验</p>
       <div class="row">
         <div class="col-xs-12 col-md-10">
           <input type="text" class="form-control">
@@ -218,21 +217,20 @@
       </div>
       <div class="col-md-9 col-xs-9">
         <h3>电子发票综合服务平台</h3>
-        <p>电子发票我综合服务平台是由电子商务交易技术国家工程实验室指导、由东港股份有限公司建设和运营的中国领先的电子发票平台，
-          平台主要为使用电子商务交易系统进行交易的商户开具电子发票提供安全的平台</p>
+        <p>电子发票综合服务平台是由电子商务交易技术国家工程实验室指导、由东港股份有限公司建设运营的中国领先电子发票平台，平台主要为使用电子商务交易系统进行交易的商户开具电子发票提供安全、可靠的平台，其主要包括电子发票管理平台、电子发票前置服务平台和电子发票应用平台三部分。</p>
       </div>
     </div>
     <div class="col-md-7 col-xs-12 query-form with-padding">
-      <h3>电子发票查询</h3>
+      <h3>电子发票查验</h3>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="请输入完整的电子发票编号">
         </div>
         <div class="col-xs-12 col-md-2">
-          <button class="btn btn-primary btn-block" type="button">查询</button>
+          <button class="btn btn-primary btn-block" type="button">查验</button>
         </div>
       </div>
-      <p>你也可以通过上传文件查询</p>
+      <p>您也可以上传电子发票文件查验</p>
       <div class="row">
         <div class="col-xs-12 col-md-10">
           <input type="text" class="form-control">
@@ -252,32 +250,32 @@
       <img src="<s:url value='/image/lab-logo.png' />" class="img-rounded" alt="圆角图片">
     </div>
     <div class="col-md-3 col-xs-6">
-      <p class="sitemap-head">产品与服务</p>
+      <p class="sitemap-head">相关链接</p>
       <div class="sitemap-item">
-        <p>服务1</p>
-        <p>服务2</p>
+        <p><a href="http://www.nelect.org">电子商务可信交易技术国家工程实验室</a></p>
+        <p><a href="http://www.ecdata.org.cn/srv/">可信平台</a></p>
+        <p><a href="http://www.51signing.com">众签电子合同服务平台</a></p>
+        <p><a href="http://www.e-inv.cn/">电子发票综合服务平台</a></p>
       </div>
     </div>
     <div class="col-md-3 col-xs-6">
       <p class="sitemap-head">存证通</p>
       <div class="sitemap-item">
         <p>关于我们</p>
-        <p>联系我们</p>
+        <p>常见问题</p>
       </div>
     </div>
     <div class="col-md-3 col-xs-6">
       <p class="sitemap-head">客服热线</p>
       <div class="sitemap-item">
-        <p>4000000</p>
-        <p>每周一到周五</p>
+        <p>010-62794291</p>
+        <p>周一至周五9:30-19:00</p>
       </div>
     </div>
   </div>
   <div class="copyleft">
     <p>版权所有&#169;电子商务交易技术国家工程实验室</p>
-    <p>电话：010-6279429
-      地址：北京市海淀区清华大学中央主楼
-      邮编：100084</p>
+    <p>地址：北京市海淀区清华大学中央主楼</p>
     <p>ICP备案号：京ICP备15039571号-2</p>
   </div>
 </div>

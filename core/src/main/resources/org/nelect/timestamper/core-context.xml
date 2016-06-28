@@ -12,7 +12,6 @@
 
   <bean id="sessionFactory" class="org.nelect.timestamper.internal.SessionFactoryImpl">
     <constructor-arg index="0" ref="contextFactory" />
-    <constructor-arg index="1" ref="timestampAgent" />
     <property name="commandContextConfig" ref="timestamperConfig" />
   </bean>
 </beans>

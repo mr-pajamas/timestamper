@@ -31,7 +31,7 @@ public class TimestampManufacturerCommand implements Command<CreditInfo> {
         // 运算digest并上传到timestamper服务器
         byte[] digest = CreditInfoDigester.digest(input);
 
-        TimestampAgent agent = context.getTimestampAgent();
+        TimestampAgent agent = context.getComponent(TimestampAgent.class);
         String transactionId = agent.timestamp(digest, new ConfirmationListener() {
 
             @Override

@@ -3,11 +3,11 @@ package org.nelect.timestamper.internal;
 import java.util.Properties;
 
 import org.nelect.timestamper.*;
-import org.nelect.timestamper.internal.agent.TimestampAgent;
 import org.nelect.timestamper.internal.interceptors.*;
 import org.nelect.timestamper.internal.persistence.Context;
 import org.nelect.timestamper.internal.persistence.ContextFactory;
 import org.nelect.timestamper.partner.*;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Created by Michael on 2016/5/31.
@@ -18,7 +18,9 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
 
     private ContextFactory persistenceContextFactory;
 
-    private TimestampAgent timestampAgent;
+    //private TimestampAgent timestampAgent;
+
+    private ApplicationContext applicationContext;
 
     private Properties config = new Properties();
 
@@ -29,9 +31,10 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
     private CreditworthinessService creditworthinessService;
     private EContractService eContractService;
 
-    public SessionImpl(ContextFactory persistenceContextFactory, TimestampAgent timestampAgent) {
+    public SessionImpl(ContextFactory persistenceContextFactory, ApplicationContext applicationContext) {
         this.persistenceContextFactory = persistenceContextFactory;
-        this.timestampAgent = timestampAgent;
+        //this.timestampAgent = timestampAgent;
+        this.applicationContext = applicationContext;
 
         executor = new CommandExecutor() {
 
@@ -123,9 +126,16 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
             return persistenceContext;
         }
 
+/*
         @Override
         public TimestampAgent getTimestampAgent() {
             return timestampAgent;
+        }
+*/
+
+        @Override
+        public <C> C getComponent(Class<C> componentClass) {
+            return applicationContext.getBean(componentClass);
         }
 
         @Override

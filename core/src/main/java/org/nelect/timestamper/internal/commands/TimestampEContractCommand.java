@@ -30,7 +30,7 @@ public class TimestampEContractCommand implements Command<EContract> {
 
         byte[] digest = EContractDigester.digest(input);
 
-        TimestampAgent agent = context.getTimestampAgent();
+        TimestampAgent agent = context.getComponent(TimestampAgent.class);
         String transactionId = agent.timestamp(digest, new ConfirmationListener() {
 
             @Override

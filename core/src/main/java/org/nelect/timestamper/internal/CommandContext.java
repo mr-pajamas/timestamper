@@ -3,7 +3,6 @@ package org.nelect.timestamper.internal;
 import java.util.Properties;
 
 import org.nelect.timestamper.Principal;
-import org.nelect.timestamper.internal.agent.TimestampAgent;
 import org.nelect.timestamper.internal.persistence.Context;
 
 /**
@@ -28,7 +27,9 @@ public interface CommandContext {
      */
     Context getPersistenceContext();
 
-    TimestampAgent getTimestampAgent();
+    //TimestampAgent getTimestampAgent();
+
+    <C> C getComponent(Class<C> componentClass);
 
     Properties getConfig();
 

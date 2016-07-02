@@ -160,3 +160,13 @@
 .modal-tip {
     color: #91bd09;
 }
+
+.cert-item {
+    border: 1px solid #ddd;
+    max-width: 300px;
+}
+
+.cert-item h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #ddd;
+}

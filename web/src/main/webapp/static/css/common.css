@@ -174,3 +174,43 @@
 #regForm .warn-tip {
     color: red;
 }
+
+.package-item {
+    font-size: 15px;
+    line-height: 60px;
+}
+
+.package-item .time {
+    border: 1px solid #ddd;
+    background-color: #ededed;
+    color: #707070;
+    text-align: center;
+    cursor: pointer;
+}
+
+.package-item .price {
+    border: 1px solid #ddd;
+    border-left: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.package-item.current .time {
+    border: 2px solid #0a67fb;
+    border-right: none;
+}
+
+.package-item.current .price {
+    border: 2px solid #0a67fb;
+    border-left: none;
+}
+
+.qa-item {
+    margin-top: 40px;
+}
+
+.qa-item .tip {
+    text-align: right;
+    color: #0d3d88;
+    font-size: 20px;
+}

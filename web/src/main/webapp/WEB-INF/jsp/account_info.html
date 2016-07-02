@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10.html</title>
+    <link href="dist/css/zui.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+</head>
+<body class="center-block">
+<nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px">
+    <!-- 导航头部 -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- 品牌名称或logo -->
+        <a class="navbar-brand" href="#">
+            <img src="http://zui.sexy/docs/img/img1.jpg" width="20px" height="20px" class="img-rounded" alt="圆角图片">
+        </a>
+    </div>
+
+    <!-- 导航项目 -->
+    <div class="collapse navbar-collapse navbar-collapse-example">
+        <!-- 右侧的导航项目 -->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="your/nice/url" class="dropdown-toggle" data-toggle="dropdown">测试用户 <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="your/nice/url">账号信息</a></li>
+                    <li><a href="your/nice/url">著作权证书</a></li>
+                    <li><a href="your/nice/url">账户明细</a></li>
+                    <li><a href="your/nice/url">登出</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+            <button class="btn btn-link" type="button">证书 42</button>
+            <button class="btn btn-link" type="button">余额 665234.54元</button>
+        </form>
+
+    </div><!-- END .navbar-collapse -->
+</nav>
+
+<div style="width: 400px; text-align: center" class="center-block with-padding">
+    <h1>账号信息</h1>
+    <br>
+    <form class="form-horizontal" role="form" method="post" style="margin-top: 20px">
+        <div class="form-group">
+            <label class="col-md-3 control-label">邮箱:</label>
+            <div class="col-md-6">
+                <input type="email" name="keywords" value="" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">已验证
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">手机:</label>
+            <div class="col-md-6">
+                <input type="email" name="keywords" value="" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" value="验证手机">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">新密码:</label>
+            <div class="col-md-6">
+                <input type="email" name="keywords" value="" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" value="修改密码">
+            </div>
+        </div>
+    </form>
+    <button class="btn btn-link" type="button" data-toggle="modal" data-target="#myModal">打开对话框</button>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+                </button>
+                <h4 class="modal-title">查验结果</h4>
+            </div>
+            <div class="modal-body">
+                <p><i class="icon icon-check" style="color: green"></i>该电子合同已由<span class="modal-tip">北京众签科技有限公司</span>于<span class="modal-tip">yyyy年MM月dd日 hh:mm:ss</span>通过存证通可信数据存证服务平台进行存证。</p>
+                <p><i class="icon icon-check" style="color: green"></i>数据指纹为<a href="#">566as5d5f6asdf</a></p>
+                <p><i class="icon icon-times" style="color: red"></i>该电子合同未通过存证通可信数据存证服务平台存证。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="dist/js/zui.min.js"></script>
+</body>
+</html>

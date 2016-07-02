@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <link href="dist/css/zui.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+</head>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+    <!-- 导航头部 -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- 品牌名称或logo -->
+        <a class="navbar-brand" href="#">
+            <img src="image/logo.png" alt="圆角图片">
+            <span class="logotxt">存证通可信数据存证服务平台</span>
+        </a>
+    </div>
+
+    <!-- 导航项目 -->
+    <div class="collapse navbar-collapse navbar-collapse-example" style="margin-top: 16px; font-size: larger">
+        <!-- 右侧的导航项目 -->
+        <form class="navbar-form navbar-right" role="search">
+            <button type="submit" class="btn btn-danger">登陆 / 注册</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
+            <li><a href="#">服务价格</a></li>
+            <li><a href="#">常见问题</a></li>
+        </ul>
+    </div><!-- END .navbar-collapse -->
+</nav>
+<div class="with-padding center-block" style="width: 500px; margin-top: 150px" id="regForm">
+    <div class="panel panel-success">
+        <div class="panel-heading" style="text-align: center; height: 40px">
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" role="form" method="post" style="margin-top: 20px">
+                <div class="form-group">
+                    <label class="col-md-3 col-xs-3 control-label">用户名：</label>
+                    <div class="col-md-9 col-xs-9 has-error">
+                        <input type="text" name="username" id="username" value="" class="form-control" placeholder="邮箱/手机号">
+                        <span class="warn-tip">邮箱地址不正确</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 col-xs-3 control-label">密码：</label>
+                    <div class="col-md-9 col-xs-9">
+                        <input type="text" name="password" id="password" value="" class="form-control" placeholder="密码">
+                        <span class="warn-tip">&nbsp;</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 col-xs-3"></div>
+                    <div class="col-md-6 col-xs-6">
+                        <input type="button" id="login" class="btn btn-primary btn-block" value="登录">
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="rememberMe" value="true" checked="">记住密码
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="dist/js/zui.min.js"></script>
+<script>
+    var intervalHandler;
+    var countDown = 60;
+    $(function(){
+        $('#resend').click(function(){
+            $(this).val("重新发送(60)");
+            $(this).attr("disabled","disabled");
+            clearInterval(intervalHandler);
+            countDown = 60;
+            intervalHandler = setInterval(function(){
+                if (countDown >= 0) {
+                    countDown--;
+                    $('#resend').val("重新发送("+countDown+")");
+                } else {
+                    $('#resend').removeAttr("disabled");
+                    $(this).val("发送");
+                }
+            }, 1000);
+        });
+    });
+</script>
+</body>
+</html>

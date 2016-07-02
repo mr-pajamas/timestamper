@@ -37,12 +37,13 @@
         </ul>
     </div><!-- END .navbar-collapse -->
 </nav>
-<div class="with-padding center-block" style="width: 500px; margin-top: 150px" id="regForm">
+<div class="center-block" style="width: 500px; margin-top: 150px" id="regForm">
     <div class="panel panel-success">
         <div class="panel-heading" style="text-align: center; height: 40px">
+
         </div>
         <div class="panel-body">
-            <form class="form-horizontal" role="form" method="post">
+            <form class="form-horizontal" role="form" method="post" style="margin-top: 20px">
                 <div class="form-group">
                     <label class="col-md-3 col-xs-3 control-label">用户名：</label>
                     <div class="col-md-9 col-xs-9 has-error">
@@ -77,7 +78,7 @@
                 <div class="form-group">
                     <div class="col-md-3 col-xs-3"></div>
                     <div class="col-md-9 col-xs-9">
-                        <input type="button" id="reg" class="btn btn-primary btn-block" value="注册">
+                        <input type="button" id="reg" class="btn btn-primary btn-block" value="注册" onclick="checkVerifyCode(); return false;">
                     </div>
                 </div>
             </form>
@@ -86,13 +87,28 @@
 </div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="dist/js/zui.min.js"></script>
+<script src="pbkdf2.js"></script>
 <script>
+    var PBKDF2_KEY_SIZE = 256 / 32;
+    var PBKDF2_ITERATIONS = 1000;
+
+    function hash(code, salt) {
+        var saltWords = CryptoJS.enc.Hex.parse(salt);
+
+        var hash = CryptoJS.PBKDF2(code, saltWords, {keySize: PBKDF2_KEY_SIZE, iterations: PBKDF2_ITERATIONS});
+
+        return hash.toString();
+    }
+
+    var lastVerifiedResult = '';
+    var lastVerifiedSalt = '';
     var intervalHandler;
     var countDown = 60;
     $(function(){
         $('#resend').click(function(){
             $(this).val("重新发送(60)");
             $(this).attr("disabled","disabled");
+            sendVerifiyCode();
             clearInterval(intervalHandler);
             countDown = 60;
             intervalHandler = setInterval(function(){
@@ -101,11 +117,28 @@
                     $('#resend').val("重新发送("+countDown+")");
                 } else {
                     $('#resend').removeAttr("disabled");
-                    $(this).val("发送");
+                    $('#resend').val("发送");
                 }
             }, 1000);
         });
     });
+
+    function sendVerifiyCode() {
+        $.getJSON("http://192.168.0.125:8080/mobile-verification?mobile=" + $('#username').val(), undefined, function(result) {
+            if (result && result.codeHashSalt) {
+                lastVerifiedSalt = result.codeHashSalt;
+                lastVerifiedResult = result.codeHash;
+            }
+        });
+    }
+
+    function checkVerifyCode() {
+        var userInputCode = $('#verificationCode').val();
+        var target = hash(userInputCode, lastVerifiedSalt);
+        if (target === lastVerifiedResult) {
+            alert('本地校验通过');
+        }
+    }
 </script>
 </body>
 </html>

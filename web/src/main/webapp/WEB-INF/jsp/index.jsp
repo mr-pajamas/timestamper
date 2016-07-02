@@ -69,11 +69,11 @@
 
 <div id="myNiceCarousel" class="carousel slide center-block" data-ride="carousel" style="margin-top: 76px">
   <!-- 圆点指示器 -->
-  <!--<ol class="carousel-indicators">
+  <ol class="carousel-indicators">
     <li data-target="#myNiceCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myNiceCarousel" data-slide-to="1"></li>
     <li data-target="#myNiceCarousel" data-slide-to="2"></li>
-  </ol>-->
+  </ol>
 
   <!-- 轮播项目 -->
   <div class="carousel-inner">

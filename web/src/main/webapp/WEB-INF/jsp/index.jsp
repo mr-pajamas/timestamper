@@ -195,7 +195,7 @@
           <input type="text" class="form-control" placeholder="请输入完整的电子合同编号">
         </div>
         <div class="col-xs-12 col-md-2">
-          <button class="btn btn-primary btn-block" type="button">查询</button>
+          <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal1">查验</button>
         </div>
       </div>
       <p>您也可以上传电子合同文件查验</p>
@@ -227,7 +227,7 @@
           <input type="text" class="form-control" placeholder="请输入完整的电子发票编号">
         </div>
         <div class="col-xs-12 col-md-2">
-          <button class="btn btn-primary btn-block" type="button">查验</button>
+          <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal2">查验</button>
         </div>
       </div>
       <p>您也可以上传电子发票文件查验</p>
@@ -280,6 +280,47 @@
   </div>
 </div>
 
+<div class="modal" id="myModal1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+                </button>
+                <h4 class="modal-title">查验结果</h4>
+            </div>
+            <div class="modal-body">
+                <p><i class="icon icon-check" style="color: green"></i>该电子合同已由<span class="modal-tip">北京众签科技有限公司</span>于<span class="modal-tip">yyyy年MM月dd日 hh:mm:ss</span>通过存证通可信数据存证服务平台进行存证。</p>
+                <p><i class="icon icon-check" style="color: green"></i>数据指纹为<a href="#">566as5d5f6asdf</a></p>
+                <p><i class="icon icon-times" style="color: red"></i>该电子合同未通过存证通可信数据存证服务平台存证。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal2">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+                </button>
+                <h4 class="modal-title">查验结果</h4>
+            </div>
+            <div class="modal-body">
+                <p><i class="icon icon-check" style="color: green"></i>该电子发票已由<span class="modal-tip">东港股份有限公司</span>于<span class="modal-tip">yyyy年MM月dd日 hh:mm:ss</span>通过存证通可信数据存证服务平台进行存证。</p>
+                <p><i class="icon icon-check" style="color: green"></i>数据指纹为<a href="#">566as5d5f6asdf</a></p>
+                <p><i class="icon icon-times" style="color: red"></i>该电子发票未通过存证通可信数据存证服务平台存证。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

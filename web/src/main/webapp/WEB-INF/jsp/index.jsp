@@ -169,7 +169,7 @@
       <h3>商品查验</h3>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" class="form-control" placeholder="请输入商品名称，支持模糊检索">>
+          <input type="text" class="form-control" placeholder="请输入商品名称，支持模糊检索">
         </div>
         <div class="col-xs-12 col-md-2">
           <button class="btn btn-primary btn-block" type="button">查验</button>

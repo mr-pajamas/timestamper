@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>充值</title>
+    <link href="dist/css/zui.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+</head>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+    <!-- 导航头部 -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- 品牌名称或logo -->
+        <a class="navbar-brand" href="#">
+            <img src="image/logo.png" alt="圆角图片">
+            <span class="logotxt">存证通可信数据存证服务平台</span>
+        </a>
+    </div>
+
+    <!-- 导航项目 -->
+    <div class="collapse navbar-collapse navbar-collapse-example" style="margin-top: 16px; font-size: larger">
+        <!-- 右侧的导航项目 -->
+        <form class="navbar-form navbar-right" role="search">
+            <button type="submit" class="btn btn-danger">登陆 / 注册</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
+            <li><a href="#">服务价格</a></li>
+            <li><a href="#">常见问题</a></li>
+        </ul>
+    </div><!-- END .navbar-collapse -->
+</nav>
+
+<div class="center-block" style="width: 720px; margin-top: 150px" id="regForm">
+    <div class="panel panel-success">
+        <div class="panel-heading" style="text-align: center; height: 40px">
+
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-2 col-xs-2">
+                    当前账号：
+                </div>
+                <div class="col-md-10 col-xs-10" style="padding-left: 0px">
+                    我是谁谁是我
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2 col-xs-2">
+                    套餐类型：
+                </div>
+                <div class="col-md-10 col-xs-10 row">
+                    <div class="col-md-4 col-xs-4 package-item row">
+                        <div class="col-md-4 col-xs-4 time">
+                            &nbsp;1次
+                        </div>
+                        <div class="col-md-8 col-xs-8 price">
+                            &nbsp;&nbsp;5元
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-4 package-item current">
+                        <div class="col-md-4 col-xs-4 time">
+                            10次
+                        </div>
+                        <div class="col-md-8 col-xs-8 price">
+                            &nbsp;30元
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-4 package-item">
+                        <div class="col-md-4 col-xs-4 time">
+                            50次
+                        </div>
+                        <div class="col-md-8 col-xs-8 price">
+                            100元
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2 col-xs-2">
+                    支付方式：
+                </div>
+                <div class="col-md-10 col-xs-10">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#">支付宝</a></li>
+                        <li><a href="#">微信支付</a></li>
+                    </ul>
+                    <h6>微信扫码支付</h6>
+                    <img src="http://zui.sexy/docs/img/img1.jpg" width="200px" height="200px" class="img-rounded" alt="圆角图片">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="dist/js/zui.min.js"></script>
+<script>
+    var intervalHandler;
+    var countDown = 60;
+    $(function(){
+        $('#resend').click(function(){
+            $(this).val("重新发送(60)");
+            $(this).attr("disabled","disabled");
+            clearInterval(intervalHandler);
+            countDown = 60;
+            intervalHandler = setInterval(function(){
+                if (countDown >= 0) {
+                    countDown--;
+                    $('#resend').val("重新发送("+countDown+")");
+                } else {
+                    $('#resend').removeAttr("disabled");
+                    $(this).val("发送");
+                }
+            }, 1000);
+        });
+    });
+</script>
+</body>
+</html>

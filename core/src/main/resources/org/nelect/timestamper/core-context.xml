@@ -2,16 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-  <import resource="classpath:org/nelect/timestamper/internal/persistence/persistence-context.xml" />
-  <import resource="classpath:org/nelect/timestamper/internal/agent/agent-context.xml" />
+  <task:annotation-driven executor="asyncExecutor" />
+  <task:executor id="asyncExecutor" pool-size="10" />
+
+  <import resource="classpath*:org/nelect/timestamper/internal/*/*-context.xml" />
 
   <util:properties id="timestamperConfig" location="classpath:timestamper.properties" />
 
   <bean id="sessionFactory" class="org.nelect.timestamper.internal.SessionFactoryImpl">
     <constructor-arg index="0" ref="contextFactory" />
     <property name="commandContextConfig" ref="timestamperConfig" />
+  </bean>
+
+  <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+    <property name="velocityProperties">
+      <value>
+        resource.loader=class
+        class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+      </value>
+    </property>
   </bean>
 </beans>

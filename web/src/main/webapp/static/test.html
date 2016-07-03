@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Page</title>
+  <script type="text/javascript" src="lib/cryptojs/pbkdf2.js"></script>
+  <script>
+    var PBKDF2_KEY_SIZE = 256 / 32;
+    var PBKDF2_ITERATIONS = 1000;
+
+    function hash(code, salt) {
+      var saltWords = CryptoJS.enc.Hex.parse(salt);
+
+      var hash = CryptoJS.PBKDF2(code, saltWords, {keySize: PBKDF2_KEY_SIZE, iterations: PBKDF2_ITERATIONS});
+
+      return hash.toString();
+    }
+  </script>
+</head>
+<body>
+<script>
+  alert(hash("596802", "83f71a1495cce22a18b6fd69b17c0fa4"));
+</script>
+</body>
+</html>

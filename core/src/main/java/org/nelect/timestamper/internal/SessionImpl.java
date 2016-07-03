@@ -7,6 +7,7 @@ import org.nelect.timestamper.internal.interceptors.*;
 import org.nelect.timestamper.internal.persistence.Context;
 import org.nelect.timestamper.internal.persistence.ContextFactory;
 import org.nelect.timestamper.partner.*;
+import org.nelect.timestamper.user.AccountService;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -30,6 +31,7 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
 
     private CreditworthinessService creditworthinessService;
     private EContractService eContractService;
+    private AccountService accountService;
 
     public SessionImpl(ContextFactory persistenceContextFactory, ApplicationContext applicationContext) {
         this.persistenceContextFactory = persistenceContextFactory;
@@ -83,6 +85,13 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
     @Override
     public CommandContext newCommandContext() {
         return new CommandContextImpl(persistenceContextFactory.newContext());
+    }
+
+    @Override
+    public AccountService getAccountService() {
+        if (accountService == null)
+            accountService = new AccountServiceImpl(this, this);
+        return accountService;
     }
 
     public CreditworthinessService getCreditworthinessService() {

@@ -14,7 +14,11 @@ public interface AccountService {
 
     boolean isMobileUsed(String mobile);
 
-    Principal newEmailUser(String email, String password) throws DuplicateUserException;
+    VerificationCodeHash sendEmailVerificationMessage(String email);
 
-    Principal newMobileUser(String mobile, String password) throws DuplicateUserException;
+    VerificationCodeHash sendMobileVerificationMessage(String mobile);
+
+    Principal newEmailUser(String email, String verificationCode, String password) throws DuplicateUserException, VerificationException;
+
+    Principal newMobileUser(String mobile, String verificationCode, String password) throws DuplicateUserException, VerificationException;
 }

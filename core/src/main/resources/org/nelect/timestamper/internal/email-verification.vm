@@ -1,0 +1,10 @@
+<html>
+<body>
+<p>您好，感谢您使用存证通！<br>请使用以下代码验证您的邮箱：</p>
+
+<h1><strong style="color: red"><code>${code}</code></strong></h1>
+
+<p>谢谢！</p>
+<p>存证通项目团队</p>
+</body>
+</html>

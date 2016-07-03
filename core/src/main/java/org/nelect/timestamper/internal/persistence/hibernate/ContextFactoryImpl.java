@@ -19,6 +19,8 @@ public class ContextFactoryImpl implements ContextFactory {
             .addResource("org/nelect/timestamper/internal/persistence/hibernate/credit-info.hbm.xml")
             .addResource("org/nelect/timestamper/internal/persistence/hibernate/e-contract.hbm.xml")
             .addResource("org/nelect/timestamper/internal/persistence/hibernate/e-invoice.hbm.xml")
+            .addResource("org/nelect/timestamper/internal/persistence/hibernate/mobile-verification.hbm.xml")
+            .addResource("org/nelect/timestamper/internal/persistence/hibernate/email-verification.hbm.xml")
             .buildMetadata()
             .buildSessionFactory();
     }

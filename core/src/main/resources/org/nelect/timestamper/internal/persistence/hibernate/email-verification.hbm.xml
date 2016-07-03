@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.nelect.timestamper.internal.persistence.hibernate">
+  <class name="EmailVerificationEntityImpl" table="email_verification">
+    <id name="id">
+      <generator class="uuid" />
+    </id>
+    <property name="email" not-null="true" unique="true" />
+    <property name="code" not-null="true" />
+    <property name="expiration" type="timestamp" not-null="true" />
+    <property name="used" />
+  </class>
+</hibernate-mapping>

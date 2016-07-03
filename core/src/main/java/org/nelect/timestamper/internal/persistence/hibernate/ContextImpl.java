@@ -16,11 +16,15 @@ class ContextImpl implements Context {
 
     private final CreditInfoManager creditInfoManager;
     private final EContractManager eContractManager;
+    private final MobileVerificationManager mobileVerificationManager;
+    private final EmailVerificationManager emailVerificationManager;
 
     ContextImpl(ContextFactoryImpl contextFactory) {
         this.contextFactory = contextFactory;
         creditInfoManager = new CreditInfoManagerImpl(this);
         eContractManager = new EContractManagerImpl(this);
+        mobileVerificationManager = new MobileVerificationManagerImpl(this);
+        emailVerificationManager = new EmailVerificationManagerImpl(this);
     }
 
     @Override
@@ -73,6 +77,16 @@ class ContextImpl implements Context {
     @Override
     public EContractManager getEContractManager() {
         return eContractManager;
+    }
+
+    @Override
+    public MobileVerificationManager getMobileVerificationManager() {
+        return mobileVerificationManager;
+    }
+
+    @Override
+    public EmailVerificationManager getEmailVerificationManager() {
+        return emailVerificationManager;
     }
 
     Session getSession() {

@@ -11,4 +11,8 @@ public interface Context extends Transactional {
     CreditInfoManager getCreditInfoManager();
 
     EContractManager getEContractManager();
+
+    MobileVerificationManager getMobileVerificationManager();
+
+    EmailVerificationManager getEmailVerificationManager();
 }

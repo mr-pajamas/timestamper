@@ -155,5 +155,15 @@
         }
     }
 </script>
+<script>
+    $(function(){
+        var height = document.documentElement.clientHeight;
+        $('.body-wrapper').css("min-height", (height - 60)+"px");
+        $( window ).resize(function() {
+            var height = document.documentElement.clientHeight
+            $('.body-wrapper').css("min-height", (height - 60)+"px");
+        });
+    })
+</script>
 </body>
 </html>

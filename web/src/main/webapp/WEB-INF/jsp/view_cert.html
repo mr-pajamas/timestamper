@@ -73,5 +73,15 @@
 </div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="dist/js/zui.min.js"></script>
+<script>
+    $(function(){
+        var height = document.documentElement.clientHeight;
+        $('.body-wrapper').css("min-height", (height - 60)+"px");
+        $( window ).resize(function() {
+            var height = document.documentElement.clientHeight
+            $('.body-wrapper').css("min-height", (height - 60)+"px");
+        });
+    })
+</script>
 </body>
 </html>

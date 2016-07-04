@@ -122,10 +122,20 @@
         $(e).parent().parent().find("li.active").removeClass("active");
         $(e).parent().addClass("active");
     }
-    $(function(){
-        $('.package-item').click(function(){
+    $(function() {
+        $('.package-item').click(function() {
             $(this).parent().find("div.current").removeClass("current");
             $(this).addClass("current");
+        });
+    })
+</script>
+<script>
+    $(function(){
+        var height = document.documentElement.clientHeight;
+        $('.body-wrapper').css("min-height", (height - 60)+"px");
+        $( window ).resize(function() {
+            var height = document.documentElement.clientHeight
+            $('.body-wrapper').css("min-height", (height - 60)+"px");
         });
     })
 </script>

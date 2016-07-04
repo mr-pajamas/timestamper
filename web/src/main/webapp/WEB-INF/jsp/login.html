@@ -72,28 +72,12 @@
         </div>
     </div>
 </div>
+<div class="with-padding footer center-block">
+    <div class="copyleft">
+        <p>版权所有&#169;电子商务交易技术国家工程实验室 京ICP备15039571号-2</p>
+    </div>
+</div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="dist/js/zui.min.js"></script>
-<script>
-    var intervalHandler;
-    var countDown = 60;
-    $(function(){
-        $('#resend').click(function(){
-            $(this).val("重新发送(60)");
-            $(this).attr("disabled","disabled");
-            clearInterval(intervalHandler);
-            countDown = 60;
-            intervalHandler = setInterval(function(){
-                if (countDown >= 0) {
-                    countDown--;
-                    $('#resend').val("重新发送("+countDown+")");
-                } else {
-                    $('#resend').removeAttr("disabled");
-                    $(this).val("发送");
-                }
-            }, 1000);
-        });
-    });
-</script>
 </body>
 </html>

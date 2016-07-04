@@ -8,37 +8,46 @@
     <link href="dist/css/zui.min.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet">
 </head>
+<body>
+<div class="center-block body-wrapper">
+    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px" id="navbar">
+        <!-- 导航头部 -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- 品牌名称或logo -->
+            <a class="navbar-brand" href="#">
+                <img src="image/logo.png" alt="圆角图片">
+                <span class="logotxt">存证通可信数据存证服务平台</span>
+            </a>
+        </div>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-    <!-- 导航头部 -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
-            <span class="sr-only">切换导航</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <!-- 品牌名称或logo -->
-        <a class="navbar-brand" href="#">
-            <img src="image/logo.png" alt="圆角图片">
-            <span class="logotxt">存证通可信数据存证服务平台</span>
-        </a>
-    </div>
+        <!-- 导航项目 -->
+        <div class="collapse navbar-collapse navbar-collapse-example">
+            <!-- 右侧的导航项目 -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="your/nice/url" class="dropdown-toggle" data-toggle="dropdown">测试用户 <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="your/nice/url">账号信息</a></li>
+                        <li><a href="your/nice/url">著作权证书</a></li>
+                        <li><a href="your/nice/url">账户明细</a></li>
+                        <li><a href="your/nice/url">登出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <button class="btn btn-link" type="button">证书 42</button>
+                <button class="btn btn-link" type="button">余额 665234.54元</button>
+            </form>
+        </div><!-- END .navbar-collapse -->
+    </nav>
 
-    <!-- 导航项目 -->
-    <div class="collapse navbar-collapse navbar-collapse-example" style="margin-top: 16px; font-size: larger">
-        <!-- 右侧的导航项目 -->
-        <form class="navbar-form navbar-right" role="search">
-            <button type="submit" class="btn btn-danger">登陆 / 注册</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
-            <li><a href="#">服务价格</a></li>
-            <li><a href="#">常见问题</a></li>
-        </ul>
-    </div><!-- END .navbar-collapse -->
-</nav>
-
-<div class="center-block" style="width: 720px; margin-top: 150px" id="regForm">
+<div class="center-block" style="width: 720px; margin-top: 20px" id="regForm">
     <div class="panel panel-success">
         <div class="panel-heading" style="text-align: center; height: 40px">
 
@@ -59,26 +68,26 @@
                 </div>
                 <div class="col-md-10 col-xs-10 row">
                     <div class="col-md-4 col-xs-4 package-item row">
-                        <div class="col-md-4 col-xs-4 time">
+                        <div class="col-md-8 col-xs-8 time">
                             &nbsp;1次
                         </div>
-                        <div class="col-md-8 col-xs-8 price">
-                            &nbsp;&nbsp;5元
+                        <div class="col-md-4 col-xs-4 price">
+                            5元
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-4 package-item current">
-                        <div class="col-md-4 col-xs-4 time">
+                        <div class="col-md-8 col-xs-8 time">
                             10次
                         </div>
-                        <div class="col-md-8 col-xs-8 price">
-                            &nbsp;30元
+                        <div class="col-md-4 col-xs-4 price">
+                            30元
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-4 package-item">
-                        <div class="col-md-4 col-xs-4 time">
+                        <div class="col-md-8 col-xs-8 time">
                             50次
                         </div>
-                        <div class="col-md-8 col-xs-8 price">
+                        <div class="col-md-4 col-xs-4 price">
                             100元
                         </div>
                     </div>
@@ -91,8 +100,8 @@
                 </div>
                 <div class="col-md-10 col-xs-10">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#">支付宝</a></li>
-                        <li><a href="#">微信支付</a></li>
+                        <li class="active"><a href="#" onclick="getActive(this);return false;">支付宝</a></li>
+                        <li><a href="#" onclick="getActive(this);return false;">微信支付</a></li>
                     </ul>
                     <h6>微信扫码支付</h6>
                     <img src="http://zui.sexy/docs/img/img1.jpg" width="200px" height="200px" class="img-rounded" alt="圆角图片">
@@ -100,29 +109,25 @@
             </div>
         </div>
     </div>
+</div></div>
+<div class="with-padding footer center-block">
+    <div class="copyleft">
+        <p>版权所有&#169;电子商务交易技术国家工程实验室 京ICP备15039571号-2</p>
+    </div>
 </div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="dist/js/zui.min.js"></script>
 <script>
-    var intervalHandler;
-    var countDown = 60;
+    function getActive(e) {
+        $(e).parent().parent().find("li.active").removeClass("active");
+        $(e).parent().addClass("active");
+    }
     $(function(){
-        $('#resend').click(function(){
-            $(this).val("重新发送(60)");
-            $(this).attr("disabled","disabled");
-            clearInterval(intervalHandler);
-            countDown = 60;
-            intervalHandler = setInterval(function(){
-                if (countDown >= 0) {
-                    countDown--;
-                    $('#resend').val("重新发送("+countDown+")");
-                } else {
-                    $('#resend').removeAttr("disabled");
-                    $(this).val("发送");
-                }
-            }, 1000);
+        $('.package-item').click(function(){
+            $(this).parent().find("div.current").removeClass("current");
+            $(this).addClass("current");
         });
-    });
+    })
 </script>
 </body>
 </html>

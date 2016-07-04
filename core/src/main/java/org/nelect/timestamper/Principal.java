@@ -9,7 +9,7 @@ public interface Principal {
 
     String getEmail();
 
-    boolean isEmailVerified();
+    //boolean isEmailVerified();
 
     String getMobile();
 

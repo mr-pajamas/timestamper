@@ -5,7 +5,7 @@ package org.nelect.timestamper.internal.mail;
  */
 public interface MailSender {
 
-    void batchSend(String message, boolean html, String email, String... otherEmails);
+    void send(Mail mail);
 
-    void batchSendAsync(String message, boolean html, String email, String... otherEmails);
+    void sendAsync(Mail mail);
 }

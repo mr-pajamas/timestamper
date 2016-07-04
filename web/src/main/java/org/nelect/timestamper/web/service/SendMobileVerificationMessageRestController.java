@@ -1,7 +1,6 @@
 package org.nelect.timestamper.web.service;
 
 import org.nelect.timestamper.user.AccountService;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 /**

@@ -26,7 +26,14 @@ public class MailSenderTest extends AbstractMailContextTest {
 
     @Test
     public void sendMail() {
-        mailSender.batchSend("Hello dude!", false, "lctang@foxmail.com");
+        Mail mail = new Mail.Builder()
+            .from("lctang@foxmail.com")
+            .fromName("汤力丞")
+            .subject("hahahah")
+            .text("shit")
+            .tos("lctang@foxmail.com")
+            .build();
+        mailSender.send(mail);
     }
 
     @AfterMethod

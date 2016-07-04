@@ -19,8 +19,6 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
 
     private ContextFactory persistenceContextFactory;
 
-    //private TimestampAgent timestampAgent;
-
     private ApplicationContext applicationContext;
 
     private Properties config = new Properties();
@@ -29,9 +27,10 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
     private CommandInterceptor first;
     private CommandInterceptor last;
 
+    private AccountService accountService;
+    private CertificateService certificateService;
     private CreditworthinessService creditworthinessService;
     private EContractService eContractService;
-    private AccountService accountService;
 
     public SessionImpl(ContextFactory persistenceContextFactory, ApplicationContext applicationContext) {
         this.persistenceContextFactory = persistenceContextFactory;
@@ -47,6 +46,7 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
         };
 
         addInterceptor(new LoggingInterceptor());
+        addInterceptor(new AccessControlInterceptor());
         addInterceptor(new ValidationInterceptor());
         addInterceptor(new TransactionInterceptor());
     }
@@ -94,6 +94,14 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
         return accountService;
     }
 
+    @Override
+    public CertificateService getCertificateService() {
+        if (certificateService == null)
+            certificateService = new CertificateServiceImpl(this, this);
+        return certificateService;
+    }
+
+    @Override
     public CreditworthinessService getCreditworthinessService() {
         if (creditworthinessService == null)
             creditworthinessService = new CreditworthinessServiceImpl(this, this);
@@ -134,13 +142,6 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
         public Context getPersistenceContext() {
             return persistenceContext;
         }
-
-/*
-        @Override
-        public TimestampAgent getTimestampAgent() {
-            return timestampAgent;
-        }
-*/
 
         @Override
         public <C> C getComponent(Class<C> componentClass) {

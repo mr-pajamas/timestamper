@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.nelect.timestamper.internal.persistence.hibernate">
+  <class name="CertificateEntityImpl" table="certificate">
+    <id name="id">
+      <generator class="uuid" />
+    </id>
+    <property name="title" not-null="true" />
+    <property name="principalId" not-null="true" />
+    <property name="registrationTime" column="registration_time" type="timestamp" />
+    <property name="attachmentName" column="attachment_name" not-null="true" />
+    <property name="attachmentContentType" column="attachment_content_type" not-null="true" />
+    <property name="attachmentPath" column="attachment_path" not-null="true" />
+    <property name="digest" not-null="true" unique="true" />
+    <property name="transactionId" column="transaction_id" unique="true" not-null="true" />
+    <property name="confident" />
+  </class>
+</hibernate-mapping>

@@ -12,6 +12,6 @@ public class EContractDigester {
         String certNumber = input.getCertNumber();
         String checksum = input.getChecksum();
 
-        return DigestUtils.sha1(principalName + certNumber + checksum);
+        return DigestUtils.sha1(principalName + ":" + certNumber + ":" + checksum);
     }
 }

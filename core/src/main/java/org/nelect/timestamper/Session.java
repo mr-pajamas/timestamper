@@ -12,6 +12,8 @@ public interface Session {
 
     AccountService getAccountService();
 
+    CertificateService getCertificateService();
+
     CreditworthinessService getCreditworthinessService();
 
     EContractService getEContractService();

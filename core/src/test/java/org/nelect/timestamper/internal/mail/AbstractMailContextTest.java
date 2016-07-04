@@ -6,7 +6,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 /**
  * Created by Michael on 2016/7/3.
  */
-@ContextConfiguration("/org/nelect/timestamper/internal/mail/mail-context.xml")
+@ContextConfiguration("/org/nelect/timestamper/internal/mail/mail-test-context.xml")
 public class AbstractMailContextTest extends AbstractTestNGSpringContextTests {
 
 }

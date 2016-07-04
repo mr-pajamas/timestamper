@@ -1,6 +1,7 @@
 package org.nelect.timestamper.internal.commands;
 
 import java.util.Map;
+import java.util.Properties;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -12,6 +13,8 @@ import org.joda.time.Seconds;
 import org.nelect.timestamper.TimestamperException;
 import org.nelect.timestamper.internal.Command;
 import org.nelect.timestamper.internal.CommandContext;
+import org.nelect.timestamper.internal.interceptors.TransactionInterceptor;
+import org.nelect.timestamper.internal.mail.Mail;
 import org.nelect.timestamper.internal.mail.MailSender;
 import org.nelect.timestamper.internal.persistence.*;
 import org.nelect.timestamper.user.VerificationCodeHash;
@@ -20,6 +23,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 /**
  * Created by Michael on 2016/7/3.
  */
+@TransactionInterceptor.Transactional
 public class SendEmailVerificationMessageCommand implements Command<VerificationCodeHash> {
 
     private static final int TTL = 300;
@@ -64,7 +68,18 @@ public class SendEmailVerificationMessageCommand implements Command<Verification
         String message = VelocityEngineUtils.mergeTemplateIntoString(
             context.getComponent(VelocityEngine.class), "org/nelect/timestamper/internal/email-verification.vm", "UTF-8", templateModel);
 
-        mailSender.batchSendAsync(message, true, email);
+        Properties config = context.getConfig();
+
+        Mail mail = new Mail.Builder()
+            .from(config.getProperty("mail.from"))
+            .fromName("存证通")
+            .subject("[存证通] 验证您的邮箱")
+            .tos(email)
+            .text(message)
+            .html(true)
+            .build();
+
+        mailSender.sendAsync(mail);
 
         return new VerificationCodeHashImpl(entity);
     }

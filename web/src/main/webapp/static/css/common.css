@@ -1,3 +1,20 @@
+body {
+    min-height: 100%;
+}
+
+.body-wrapper {
+    max-width: 1120px;
+}
+
+#navbar {
+    max-width: 1120px;
+}
+
+.navbar-collapse-example {
+    margin-top: 16px;
+    font-size: larger
+}
+
 .main-container {
     background-color: rgb(240, 232, 226);
 }
@@ -11,6 +28,7 @@
 }
 
 .main-function .function-body {
+
 }
 
 .main-function .function-head {
@@ -176,7 +194,6 @@
 }
 
 .package-item {
-    font-size: 15px;
     line-height: 60px;
 }
 
@@ -193,6 +210,7 @@
     border-left: none;
     text-align: center;
     cursor: pointer;
+    color: red;
 }
 
 .package-item.current .time {
@@ -219,3 +237,5 @@
     font-size: 20px;
     color: #1a1a1a;
 }
+
+

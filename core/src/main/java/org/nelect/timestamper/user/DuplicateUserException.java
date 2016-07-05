@@ -7,7 +7,7 @@ import org.nelect.timestamper.TimestamperException;
  */
 public class DuplicateUserException extends TimestamperException {
 
-    public DuplicateUserException(String message) {
+    public DuplicateUserException() {
         super("用户已经存在");
     }
 }

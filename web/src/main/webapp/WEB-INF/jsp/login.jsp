@@ -1,3 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录</title>
-    <link href="dist/css/zui.min.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
+    <link href="<s:url value='/dist/css/zui.min.css' />" rel="stylesheet">
+    <link href="<s:url value='/css/common.css' />" rel="stylesheet">
 </head>
+<body>
 <div class="center-block body-wrapper">
     <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px" id="navbar">
         <!-- 导航头部 -->
@@ -20,8 +23,8 @@
             </button>
             <!-- 品牌名称或logo -->
             <a class="navbar-brand" href="#">
-                <img src="image/logo.png" alt="圆角图片">
-                <span class="logotxt">存证通可信数据存证服务平台</span>
+                <img src="<s:url value='/image/logo.png' />" alt="圆角图片">
+                <!--<span class="logotxt">存证通可信数据存证服务平台</span>-->
             </a>
         </div>
 
@@ -42,25 +45,30 @@
         <div class="panel-heading" style="text-align: center; height: 40px">
         </div>
         <div class="panel-body">
-            <form class="form-horizontal" role="form" method="post" style="margin-top: 20px">
+            <form id="sign-in-form" class="form-horizontal" role="form" action="<s:url value='/sign-in' />" method="post" style="margin-top: 20px">
+                <input type="hidden" name="email">
+                <input type="hidden" name="mobile">
+                <input type="hidden" name="password">
                 <div class="form-group">
                     <label class="col-md-3 col-xs-3 control-label">用户名：</label>
-                    <div class="col-md-9 col-xs-9 has-error">
+                    <!--<div class="col-md-9 col-xs-9 has-error">-->
+
+                    <div class="col-md-9 col-xs-9">
                         <input type="text" name="username" id="username" value="" class="form-control" placeholder="邮箱/手机号">
-                        <span class="warn-tip">邮箱地址不正确</span>
+                        <!--<span class="warn-tip">邮箱地址不正确</span>-->
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 col-xs-3 control-label">密码：</label>
                     <div class="col-md-9 col-xs-9">
-                        <input type="text" name="password" id="password" value="" class="form-control" placeholder="密码">
+                        <input type="text" name="pwd" id="pwd" value="" class="form-control" placeholder="密码">
                         <span class="warn-tip">&nbsp;</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-3 col-xs-3"></div>
                     <div class="col-md-6 col-xs-6">
-                        <input type="button" id="login" class="btn btn-primary btn-block" value="登录">
+                        <input type="submit" id="login" class="btn btn-primary btn-block" value="登录">
                     </div>
                     <div class="col-md-3 col-xs-3">
                         <label class="checkbox-inline">
@@ -69,16 +77,51 @@
                     </div>
                 </div>
             </form>
+
+            <p class="text-center"><a href="<s:url value='/sign-up' />">注册新帐号</a></p>
         </div>
     </div>
-</div></div>
+</div>
+</div>
 <div class="with-padding footer center-block">
     <div class="copyleft">
         <p>版权所有&#169;电子商务交易技术国家工程实验室 京ICP备15039571号-2</p>
     </div>
 </div>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="dist/js/zui.min.js"></script>
+<script src="<s:url value='/lib/jquery/jquery.min.js' />"></script>
+<script src="<s:url value='/dist/js/zui.min.js' />"></script>
+<script src="<s:url value='/lib/cryptojs/sha256.js' />"></script>
+<script>
+    var emailOrMobile = undefined;
+    $(function () {
+       $("#username").change(function () {
+           if (/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test($('#username').val())) {
+               emailOrMobile = false;
+               $('input[name=mobile]').val($('#username').val());
+           } else if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test($('#username').val())) {
+               emailOrMobile = true;
+               $('input[name=email]').val($('#username').val());
+           }
+       })
+    });
+
+    $(function () {
+        $("#sign-in-form").submit(function () {
+            if ($(this).find("input[name=mobile]").val() || $(this).find("input[name=email]").val()) {
+                if ($(this).find("input[name=pwd]").val()) {
+                    $(this).find("input[name=password]").val(CryptoJS.SHA256($(this).find("input[name=pwd]").val()).toString());
+                    return true;
+                } else {
+                    alert("请填写密码");
+                }
+            } else {
+                alert("请填写正确的账户名");
+            }
+            return false;
+        });
+    });
+</script>
+
 <script>
     $(function(){
         var height = document.documentElement.clientHeight;

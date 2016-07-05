@@ -51,14 +51,14 @@
     <!-- 品牌名称或logo -->
     <a class="navbar-brand" href="#">
       <img src="<s:url value='/image/logo.png' />" alt="圆角图片">
-      <span class="logotxt">存证通可信数据存证服务平台</span>
+      <!--<span class="logotxt">存证通可信数据存证服务平台</span>-->
     </a>
   </div>
 
   <!-- 导航项目 -->
   <div class="collapse navbar-collapse navbar-collapse-example" style="margin-top: 16px; font-size: larger">
     <!-- 右侧的导航项目 -->
-    <form class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" role="search" action="<s:url value='/sign-in' />" method="get">
       <button type="submit" class="btn btn-danger">登陆 / 注册</button>
     </form>
     <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
@@ -116,7 +116,7 @@
   <div class="row main-function">
     <div class="col-xs-12 col-md-4 row">
         <div class="function-head col-md-6 col-xs-6 with-padding">
-            <img src="http://zui.sexy/docs/img/img1.jpg" class="img-rounded" alt="圆角图片">
+            <img src="<s:url value='/images/youxiao0.png' />" class="img-rounded" alt="圆角图片">
         </div>
         <div class="function-body col-md-6 col-xs-6 with-padding">
             <h3>有效</h3>
@@ -125,7 +125,7 @@
     </div>
     <div class="col-xs-12 col-md-4 row">
         <div class="function-head col-md-6 col-xs-6 with-padding">
-            <img src="http://zui.sexy/docs/img/img1.jpg" class="img-rounded" alt="圆角图片">
+            <img src="<s:url value='/images/bianjie0.png' />" class="img-rounded" alt="圆角图片">
         </div>
         <div class="function-body col-md-6 col-xs-6 with-padding">
             <h3>便捷</h3>
@@ -134,7 +134,7 @@
     </div>
     <div class="col-xs-12 col-md-4 row">
         <div class="function-head col-md-6 col-xs-6 with-padding">
-            <img src="http://zui.sexy/docs/img/img1.jpg" class="img-rounded" alt="圆角图片">
+            <img src="<s:url value='/images/anquan0.png' />" class="img-rounded" alt="圆角图片">
         </div>
         <div class="function-body col-md-6 col-xs-6 with-padding">
             <h3>安全</h3>

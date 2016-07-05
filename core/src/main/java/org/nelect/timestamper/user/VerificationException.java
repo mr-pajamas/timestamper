@@ -7,7 +7,7 @@ import org.nelect.timestamper.TimestamperException;
  */
 public class VerificationException extends TimestamperException {
 
-    public VerificationException(String message) {
+    public VerificationException() {
         super("邮箱/手机验证失败");
     }
 }

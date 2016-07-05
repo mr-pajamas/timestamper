@@ -15,6 +15,8 @@ import org.nelect.timestamper.internal.persistence.*;
 import org.nelect.timestamper.internal.sms.MessageSender;
 import org.nelect.timestamper.user.VerificationCodeHash;
 
+import static org.apache.commons.lang3.StringUtils.trimToNull;
+
 /**
  * Created by Michael on 2016/7/1.
  */
@@ -30,7 +32,7 @@ public class SendMobileVerificationMessageCommand implements Command<Verificatio
     private String mobile;
 
     public SendMobileVerificationMessageCommand(String mobile) {
-        this.mobile = mobile;
+        this.mobile = trimToNull(mobile);
     }
 
     @Override

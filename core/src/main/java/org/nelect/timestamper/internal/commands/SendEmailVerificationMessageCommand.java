@@ -20,6 +20,8 @@ import org.nelect.timestamper.internal.persistence.*;
 import org.nelect.timestamper.user.VerificationCodeHash;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
+import static org.apache.commons.lang3.StringUtils.trimToNull;
+
 /**
  * Created by Michael on 2016/7/3.
  */
@@ -35,7 +37,7 @@ public class SendEmailVerificationMessageCommand implements Command<Verification
     private String email;
 
     public SendEmailVerificationMessageCommand(String email) {
-        this.email = email;
+        this.email = trimToNull(email);
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.nelect.timestamper.TimestamperException;
  */
 public class AuthenticationException extends TimestamperException {
 
-    public AuthenticationException(String message) {
+    public AuthenticationException() {
         super("密码错误");
     }
 }

@@ -14,6 +14,7 @@ class ContextImpl implements Context {
     private Session session;
     private boolean inTransaction = false;
 
+    private final UserManager userManager;
     private final CertificateManager certificateManager;
     private final CreditInfoManager creditInfoManager;
     private final EContractManager eContractManager;
@@ -23,6 +24,7 @@ class ContextImpl implements Context {
     ContextImpl(ContextFactoryImpl contextFactory) {
         this.contextFactory = contextFactory;
 
+        userManager = new UserManagerImpl(this);
         certificateManager = new CertificateManagerImpl(this);
         creditInfoManager = new CreditInfoManagerImpl(this);
         eContractManager = new EContractManagerImpl(this);
@@ -70,6 +72,11 @@ class ContextImpl implements Context {
                 session = null;
             }
         }
+    }
+
+    @Override
+    public UserManager getUserManager() {
+        return userManager;
     }
 
     @Override

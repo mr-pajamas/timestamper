@@ -1,8 +1,7 @@
 package org.nelect.timestamper.internal;
 
 import org.nelect.timestamper.Principal;
-import org.nelect.timestamper.internal.commands.SendEmailVerificationMessageCommand;
-import org.nelect.timestamper.internal.commands.SendMobileVerificationMessageCommand;
+import org.nelect.timestamper.internal.commands.*;
 import org.nelect.timestamper.user.*;
 
 /**
@@ -19,8 +18,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Principal authenticate(String emailOrMobile, String password) throws UserNotFoundException, AuthenticationException, AccountLockedException {
-        return null;
+    public Principal authenticateByEmail(String email, String password) throws UserNotFoundException, AuthenticationException, AccountLockedException {
+        return executor.execute(new AuthenticateByEmailCommand(email, password), contextFactory.newCommandContext());
+    }
+
+    @Override
+    public Principal authenticateByMobile(String mobile, String password) throws UserNotFoundException, AuthenticationException, AccountLockedException {
+        return executor.execute(new AuthenticateByMobileCommand(mobile, password), contextFactory.newCommandContext());
     }
 
     @Override
@@ -44,12 +48,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Principal newEmailUser(String email, String verificationCode, String password) throws DuplicateUserException {
-        return null;
+    public Principal newEmailUser(String email, String verificationCode, String password) throws DuplicateUserException, VerificationException {
+        return executor.execute(new NewEmailUserCommand(email, verificationCode, password), contextFactory.newCommandContext());
     }
 
     @Override
-    public Principal newMobileUser(String mobile, String verificationCode, String password) throws DuplicateUserException {
-        return null;
+    public Principal newMobileUser(String mobile, String verificationCode, String password) throws DuplicateUserException, VerificationException {
+        return executor.execute(new NewMobileUserCommand(mobile, verificationCode, password), contextFactory.newCommandContext());
     }
 }

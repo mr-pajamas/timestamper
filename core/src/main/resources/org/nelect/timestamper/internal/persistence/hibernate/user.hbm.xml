@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.nelect.timestamper.internal.persistence.hibernate">
+  <class name="UserEntityImpl" table="user">
+    <id name="id">
+      <generator class="uuid" />
+    </id>
+    <property name="email" unique="true" />
+    <property name="mobile" unique="true" />
+    <property name="password" not-null="true" />
+    <property name="creationTime" column="creation_time" type="timestamp" not-null="true" />
+    <property name="verificationTime" column="verification_time" type="timestamp" />
+
+    <joined-subclass name="IndividualUserEntityImpl" table="individual_user">
+      <key column="user_id" />
+      <property name="name" not-null="true" />
+      <property name="idCardNumber" column="id_card_no" not-null="true" />
+      <property name="idCardFrontPictureContentType" column="id_card_front_pic_content_type" not-null="true" />
+      <property name="idCardFrontPicturePath" column="id_card_front_pic_path" not-null="true" />
+      <property name="idCardBackPictureContentType" column="id_card_back_pic_content_type" not-null="true" />
+      <property name="idCardBackPicturePath" column="id_card_back_pic_path" not-null="true" />
+    </joined-subclass>
+
+    <joined-subclass name="OrganizationUserEntityImpl" table="organization_user">
+      <key column="user_id" />
+      <property name="name" not-null="true" />
+      <property name="registrationNumber" column="registration_no" not-null="true" />
+      <property name="businessLicensePictureContentType" column="license_pic_content_type" not-null="true" />
+      <property name="businessLicensePicturePath" column="license_pic_path" not-null="true" />
+    </joined-subclass>
+  </class>
+</hibernate-mapping>

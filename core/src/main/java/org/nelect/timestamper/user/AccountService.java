@@ -7,7 +7,10 @@ import org.nelect.timestamper.Principal;
  */
 public interface AccountService {
 
-    Principal authenticate(String emailOrMobile, String password)
+    Principal authenticateByEmail(String email, String password)
+        throws UserNotFoundException, AuthenticationException, AccountLockedException;
+
+    Principal authenticateByMobile(String mobile, String password)
         throws UserNotFoundException, AuthenticationException, AccountLockedException;
 
     boolean isEmailUsed(String email);

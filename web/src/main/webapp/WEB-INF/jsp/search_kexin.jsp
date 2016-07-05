@@ -13,7 +13,8 @@
   <link href="<s:url value='/css/common.css' />" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+<div class="center-block body-wrapper">
+<nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px" id="navbar">
   <!-- 导航头部 -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
@@ -117,44 +118,25 @@
   </div>
 
 </div>
+</div>
 
-<div class="with-padding footer">
-  <div class="row sitemap">
-    <div class="col-md-3">
-      <img src="<s:url value='/image/lab-logo.png' />" class="img-rounded" alt="圆角图片">
+<div class="with-padding footer center-block">
+    <div class="copyleft">
+        <p>版权所有&#169;电子商务交易技术国家工程实验室 京ICP备15039571号-2</p>
     </div>
-    <div class="col-md-3">
-      <p class="sitemap-head">产品与服务</p>
-      <div class="sitemap-item">
-        <p>服务1</p>
-        <p>服务2</p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <p class="sitemap-head">存证通</p>
-      <div class="sitemap-item">
-        <p>关于我们</p>
-        <p>联系我们</p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <p class="sitemap-head">客服热线</p>
-      <div class="sitemap-item">
-        <p>4000000</p>
-        <p>每周一到周五</p>
-      </div>
-    </div>
-  </div>
-  <div class="copyleft">
-    <p>版权所有&#169;电子商务交易技术国家工程实验室</p>
-    <p>电话：010-6279429
-      地址：北京市海淀区清华大学中央主楼
-      邮编：100084</p>
-    <p>ICP备案号：京ICP备15039571号-2</p>
-  </div>
 </div>
 
 <script src="<s:url value='/dist/lib/jquery/jquery.js' />"></script>
 <script src="<s:url value='/dist/js/zui.min.js' />"></script>
+<script>
+    $(function(){
+        var height = document.documentElement.clientHeight;
+        $('.body-wrapper').css("min-height", (height - 20)+"px");
+        $( window ).resize(function() {
+            var height = document.documentElement.clientHeight
+            $('.body-wrapper').css("min-height", (height - 20)+"px");
+        });
+    })
+</script>
 </body>
 </html>

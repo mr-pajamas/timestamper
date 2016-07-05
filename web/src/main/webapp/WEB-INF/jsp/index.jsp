@@ -17,12 +17,12 @@
   <script src="<s:url value='/sha256.js' />"></script>
   <script>
     $(function(){
-      var width = document.body.clientWidth;
+      /*var width = document.body.clientWidth;
       $('#myNiceCarousel img').width(width);
       $( window ).resize(function() {
           var width = document.body.clientWidth;
           $('#myNiceCarousel img').width(width);
-      });
+      });*/
       $.ajaxUploadSettings.name = 'uploads[]';
       $('#uploadBtn').ajaxUploadPrompt({
         beforeSend : function (ajax, data) {
@@ -38,7 +38,8 @@
   </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+<div class="center-block body-wrapper">
+<nav class="navbar navbar-default navbar-fixed-top center-block" role="navigation" id="navbar">
   <!-- 导航头部 -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
@@ -266,20 +267,18 @@
       </div>
     </div>
     <div class="col-md-3 col-xs-6">
-      <p class="sitemap-head">客服热线</p>
-      <div class="sitemap-item">
-        <p>010-62794291</p>
-        <p>周一至周五9:30-19:00</p>
-      </div>
+        <p class="sitemap-head">客服热线</p>
+        <div class="sitemap-item">
+            <p><i class="icon icon-phone"></i>&nbsp;010-6279429</p>
+            <p><i class="icon icon-location-arrow"></i>&nbsp;北京市海淀区清华大学中央主楼</p>
+        </div>
     </div>
   </div>
   <div class="copyleft">
-    <p>版权所有&#169;电子商务交易技术国家工程实验室</p>
-    <p>地址：北京市海淀区清华大学中央主楼</p>
-    <p>ICP备案号：京ICP备15039571号-2</p>
+    <p>版权所有&#169;电子商务交易技术国家工程实验室 京ICP备15039571号-2</p>
   </div>
 </div>
-
+</div>
 <div class="modal" id="myModal1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

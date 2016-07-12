@@ -202,7 +202,7 @@
       <p>您也可以上传电子合同文件查验</p>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" disabled>
         </div>
         <div class="col-xs-12 col-md-2">
           <button class="btn btn-primary btn-block" type="button">上传文件</button>
@@ -234,7 +234,7 @@
       <p>您也可以上传电子发票文件查验</p>
       <div class="row">
         <div class="col-xs-12 col-md-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" disabled>
         </div>
         <div class="col-xs-12 col-md-2">
           <button class="btn btn-primary btn-block" type="button" id="uploadBtn">上传文件</button>
@@ -267,10 +267,12 @@
       </div>
     </div>
     <div class="col-md-3 col-xs-6">
-        <p class="sitemap-head">客服热线</p>
+        <p class="sitemap-head">联系我们</p>
         <div class="sitemap-item">
-            <p><i class="icon icon-phone"></i>&nbsp;010-6279429</p>
-            <p><i class="icon icon-location-arrow"></i>&nbsp;北京市海淀区清华大学中央主楼</p>
+            <p><i class="icon icon-phone"></i>&nbsp;电话：010-62794291</p>
+            <p><i class="icon icon-inbox"></i>&nbsp;传真：010-62794291</p>
+            <p><i class="icon icon-book"></i>&nbsp;邮编：100084</p>
+            <p><i class="icon icon-location-arrow"></i>&nbsp;地址：北京市海淀区清华大学中央主楼</p>
         </div>
     </div>
   </div>

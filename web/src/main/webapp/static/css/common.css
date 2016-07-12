@@ -92,6 +92,10 @@
     margin-left: 30px;
 }
 
+.footer p {
+    white-space:nowrap;
+}
+
 .footer .copyleft {
     text-align: center;
     font-size: 5px;

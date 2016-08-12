@@ -38,7 +38,7 @@ class UserManagerImpl implements UserManager {
         boolean failed = false;
         Session session = context.getSession();
         try {
-            return session.get(UserEntity.class, id);
+            return session.get(UserEntityImpl.class, id);
         } catch (RuntimeException re) {
             failed = true;
             throw re;
@@ -52,7 +52,7 @@ class UserManagerImpl implements UserManager {
         boolean failed = false;
         Session session = context.getSession();
         try {
-            return (UserEntity) session.createCriteria(UserEntity.class)
+            return (UserEntity) session.createCriteria(UserEntityImpl.class)
                 .add(Restrictions.eq("email", email))
                 .uniqueResult();
         } catch (RuntimeException re) {
@@ -68,7 +68,7 @@ class UserManagerImpl implements UserManager {
         boolean failed = false;
         Session session = context.getSession();
         try {
-            return (UserEntity) session.createCriteria(UserEntity.class)
+            return (UserEntity) session.createCriteria(UserEntityImpl.class)
                 .add(Restrictions.eq("mobile", mobile))
                 .uniqueResult();
         } catch (RuntimeException re) {
@@ -126,8 +126,32 @@ class UserManagerImpl implements UserManager {
         }
 
         @Override
+        public UserUpdater setIdentityType(UserEntity.IdentityType type) {
+            entity.setIdentityType(type);
+            return this;
+        }
+
+        @Override
         public UserUpdater setVerificationTime(Date verificationTime) {
             entity.setVerificationTime(verificationTime);
+            return this;
+        }
+
+        @Override
+        public UserUpdater setVerificationFailReasons(String verificationFailReasons) {
+            entity.setVerificationFailReasons(verificationFailReasons);
+            return this;
+        }
+
+        @Override
+        public UserUpdater setCertificateCount(Integer certificateCount) {
+            entity.setCertificateCount(certificateCount);
+            return this;
+        }
+
+        @Override
+        public UserUpdater setBalance(Integer balance) {
+            entity.setBalance(balance);
             return this;
         }
 
@@ -152,8 +176,17 @@ class UserManagerImpl implements UserManager {
         private DetachedCriteria criteria = DetachedCriteria.forClass(UserEntityImpl.class);
 
         @Override
-        public UserQuery verificationTimeExists() {
-            criteria.add(Restrictions.isNotNull("verificationTime"));
+        public UserQuery identified(boolean individualOrOrganization) {
+            criteria.add(Restrictions.eq("identityType", individualOrOrganization ? UserEntity.IdentityType.INDIVIDUAL : UserEntity.IdentityType.ORGANIZATION));
+            return this;
+        }
+
+        @Override
+        public UserQuery verificationTimeExists(boolean exists) {
+            if (exists)
+                criteria.add(Restrictions.isNotNull("verificationTime"));
+            else
+                criteria.add(Restrictions.isNull("verificationTime"));
             return this;
         }
 

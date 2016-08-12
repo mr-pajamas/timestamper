@@ -1,9 +1,7 @@
 package org.nelect.timestamper.internal;
 
-import java.io.File;
 import java.util.Date;
 
-import org.nelect.timestamper.Attachment;
 import org.nelect.timestamper.Certificate;
 import org.nelect.timestamper.internal.persistence.CertificateEntity;
 
@@ -30,6 +28,7 @@ public class CertificateImpl implements Certificate {
         return principalName;
     }
 
+/*
     @Override
     public Attachment getAttachment() {
         return new Attachment() {
@@ -49,6 +48,12 @@ public class CertificateImpl implements Certificate {
                 return new File(entity.getAttachmentPath());
             }
         };
+    }
+*/
+
+    @Override
+    public String getAttachmentId() {
+        return entity.getAttachmentId();
     }
 
     @Override

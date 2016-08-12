@@ -51,4 +51,11 @@ public class SessionFactoryImpl implements SessionFactory, ApplicationContextAwa
 
         return session;
     }
+
+    @Override
+    public AdminSession newAdminSession() {
+        AdminSessionImpl adminSession = new AdminSessionImpl(persistenceContextFactory, applicationContext);
+        if (commandContextConfig != null) adminSession.setConfig(commandContextConfig);
+        return adminSession;
+    }
 }

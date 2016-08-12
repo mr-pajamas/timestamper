@@ -1,9 +1,7 @@
 package org.nelect.timestamper.internal;
 
-import java.io.File;
 import java.util.Date;
 
-import org.nelect.timestamper.Attachment;
 import org.nelect.timestamper.internal.persistence.CreditInfoEntity;
 import org.nelect.timestamper.partner.CreditInfo;
 
@@ -43,6 +41,7 @@ public class CreditInfoImpl implements CreditInfo {
         return entity.getRegistrationTime();
     }
 
+/*
     @Override
     public Attachment getAttachment() {
         return new Attachment() {
@@ -62,6 +61,12 @@ public class CreditInfoImpl implements CreditInfo {
                 return new File(entity.getAttachmentPath());
             }
         };
+    }
+*/
+
+    @Override
+    public String getAttachmentId() {
+        return entity.getAttachmentId();
     }
 
     @Override

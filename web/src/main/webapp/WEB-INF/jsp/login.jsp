@@ -3,16 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>登录</title>
-    <link href="<s:url value='/dist/css/zui.min.css' />" rel="stylesheet">
-    <link href="<s:url value='/css/common.css' />" rel="stylesheet">
+
+    <%@ include file="head.jsp" %>
+    <title>登录 - 存证通可信数据保全服务平台</title>
 </head>
 <body>
 <div class="center-block body-wrapper">
-    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px" id="navbar">
+<%--    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px" id="navbar">
         <!-- 导航头部 -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
@@ -32,14 +29,16 @@
         <div class="collapse navbar-collapse navbar-collapse-example">
             <!-- 右侧的导航项目 -->
             <form class="navbar-form navbar-right" role="search">
-                <button type="submit" class="btn btn-danger">登陆 / 注册</button>
+                <button type="submit" class="btn btn-danger">登录 / 注册</button>
             </form>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
                 <li><a href="#">服务价格</a></li>
                 <li><a href="#">常见问题</a></li>
             </ul>
         </div><!-- END .navbar-collapse -->
-    </nav>
+    </nav>--%>
+
+<%@ include file="header.jsp" %>
 <div class="with-padding center-block" style="width: 500px; margin-top: 20px" id="regForm">
     <div class="panel panel-success">
         <div class="panel-heading" style="text-align: center; height: 40px">
@@ -61,7 +60,7 @@
                 <div class="form-group">
                     <label class="col-md-3 col-xs-3 control-label">密码：</label>
                     <div class="col-md-9 col-xs-9">
-                        <input type="text" name="pwd" id="pwd" value="" class="form-control" placeholder="密码">
+                        <input type="password" name="pwd" id="pwd" value="" class="form-control" placeholder="密码">
                         <span class="warn-tip">&nbsp;</span>
                     </div>
                 </div>

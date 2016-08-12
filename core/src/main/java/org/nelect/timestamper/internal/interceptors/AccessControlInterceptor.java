@@ -1,7 +1,6 @@
 package org.nelect.timestamper.internal.interceptors;
 
-import org.nelect.timestamper.TimestamperException;
-import org.nelect.timestamper.UnauthorizedActionException;
+import org.nelect.timestamper.*;
 import org.nelect.timestamper.internal.*;
 
 /**
@@ -17,10 +16,11 @@ public class AccessControlInterceptor extends CommandInterceptor {
 
         Privileged privileged = command.getClass().getAnnotation(Privileged.class);
 
-        if (privileged.value().isAssignableFrom(context.getPrincipal().getClass())) {
-            return next.execute(command, context);
-        } else {
-            throw new UnauthorizedActionException(privileged.value());
+        for (Class<? extends Principal> principalClass : privileged.value()) {
+            if (principalClass.isAssignableFrom(context.getPrincipal().getClass()))
+                return next.execute(command, context);
         }
+
+        throw new UnauthorizedActionException(privileged.value());
     }
 }

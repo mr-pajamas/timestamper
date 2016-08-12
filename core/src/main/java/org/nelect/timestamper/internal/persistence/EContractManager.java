@@ -12,5 +12,7 @@ public interface EContractManager extends EntityManager<String, EContractEntity,
 
     EContractEntity getByCheckId(String checkId);
 
+    EContractEntity getByCertNumber(String certNumber);
+
     EContractEntity getByChecksum(String checksum);
 }

@@ -5,7 +5,13 @@ package org.nelect.timestamper.partner;
  */
 public interface EInvoiceService {
 
-    EInvoice getEInvoiceByCheckId(String checkId);
+    EInvoice timestampEInvoice(EInvoiceInput input);
 
-    EInvoice getEInvoiceByChecksum(String checksum);
+    EInvoice getEInvoice(String digest);
+
+    EInvoice findEInvoiceByCheckId(String checkId);
+
+    EInvoice findEInvoiceByCertNumber(String certNumber);
+
+    EInvoice findEInvoiceByChecksum(String checksum);
 }

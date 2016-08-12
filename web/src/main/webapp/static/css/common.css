@@ -67,8 +67,8 @@
 }
 
 .logo img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    padding-top: 15px;
 }
 
 .party .intro {
@@ -87,14 +87,18 @@
 }
 
 .footer {
-    padding-left: 40px;
-    padding-right: 50px;
+    /*padding-left: 40px;
+    padding-right: 50px;*/
     padding-top: 0px;
     padding-bottom: 0px;
 }
 
 .footer img {
-    margin-left: 30px;
+    /*margin-left: 30px;*/
+}
+
+.footer p {
+    white-space:nowrap;
 }
 
 .footer .copyleft {
@@ -108,7 +112,7 @@
 }
 
 .footer .sitemap-item {
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 
 .footer .sitemap-head {

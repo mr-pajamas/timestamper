@@ -65,6 +65,7 @@ public class NewMobileUserCommand implements Command<Principal> {
             .setMobile(mobile)
             .setPassword(password)
             .setCreationTime(new Date())
+            .setIdentityType(UserEntity.IdentityType.UNIDENTIFIED)
             .save();
 
         return new PrincipalImpl(userEntity);

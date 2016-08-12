@@ -96,6 +96,22 @@ class EContractManagerImpl implements EContractManager {
     }
 
     @Override
+    public EContractEntity getByCertNumber(String certNumber) {
+        boolean failed = false;
+        Session session = context.getSession();
+        try {
+            return (EContractEntity) session.createCriteria(EContractEntity.class)
+                .add(Restrictions.eq("certNumber", certNumber))
+                .uniqueResult();
+        } catch (RuntimeException re) {
+            failed = true;
+            throw re;
+        } finally {
+            context.releaseSession(failed);
+        }
+    }
+
+    @Override
     public EContractEntity getByChecksum(String checksum) {
         boolean failed = false;
         Session session = context.getSession();

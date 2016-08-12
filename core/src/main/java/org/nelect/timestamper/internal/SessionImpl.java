@@ -8,6 +8,7 @@ import org.nelect.timestamper.internal.persistence.Context;
 import org.nelect.timestamper.internal.persistence.ContextFactory;
 import org.nelect.timestamper.partner.*;
 import org.nelect.timestamper.user.AccountService;
+import org.nelect.timestamper.user.IdentityService;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -28,9 +29,12 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
     private CommandInterceptor last;
 
     private AccountService accountService;
+    private AttachmentService attachmentService;
+    private IdentityService identityService;
     private CertificateService certificateService;
     private CreditworthinessService creditworthinessService;
     private EContractService eContractService;
+    private EInvoiceService eInvoiceService;
 
     public SessionImpl(ContextFactory persistenceContextFactory, ApplicationContext applicationContext) {
         this.persistenceContextFactory = persistenceContextFactory;
@@ -95,6 +99,20 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
     }
 
     @Override
+    public AttachmentService getAttachmentService() {
+        if (attachmentService == null)
+            attachmentService = new AttachmentServiceImpl(this, this);
+        return attachmentService;
+    }
+
+    @Override
+    public IdentityService getIdentityService() {
+        if (identityService == null)
+            identityService = new IdentityServiceImpl(this, this);
+        return identityService;
+    }
+
+    @Override
     public CertificateService getCertificateService() {
         if (certificateService == null)
             certificateService = new CertificateServiceImpl(this, this);
@@ -117,7 +135,9 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
 
     @Override
     public EInvoiceService getEInvoiceService() {
-        throw new UnsupportedOperationException("尚未提供此功能");
+        if (eInvoiceService == null)
+            eInvoiceService = new EInvoiceServiceImpl(this, this);
+        return eInvoiceService;
     }
 
     private class CommandContextImpl implements CommandContext {
@@ -156,6 +176,11 @@ public class SessionImpl implements Session, CommandExecutor, CommandContextFact
         @Override
         public Principal getPrincipal() {
             return principal;
+        }
+
+        @Override
+        public boolean isAdmin() {
+            return false;
         }
     }
 }

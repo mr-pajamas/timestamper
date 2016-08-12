@@ -11,11 +11,15 @@ public interface CertificateEntity extends Entity<String> {
 
     String getPrincipalId();
 
+/*
     String getAttachmentName();
 
     String getAttachmentContentType();
 
     String getAttachmentPath();
+*/
+
+    String getAttachmentId();
 
     String getDigest();
 

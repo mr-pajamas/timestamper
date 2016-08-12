@@ -1,7 +1,5 @@
 package org.nelect.timestamper.partner;
 
-import java.io.*;
-
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -12,7 +10,8 @@ public class CreditInfoDigester {
     public static byte[] digest(CreditInfoInput input) {
         String principalName = input.getPrincipalName();
         String detailsChecksum = DigestUtils.sha1Hex(input.getDetails());
-        String attachmentChecksum;
+        String attachmentChecksum = input.getAttachmentId();
+/*
         try (InputStream in = new FileInputStream(input.getAttachment().getFile())) {
             attachmentChecksum = DigestUtils.sha1Hex(in);
         } catch (FileNotFoundException fnfe) {
@@ -20,6 +19,7 @@ public class CreditInfoDigester {
         } catch (IOException ioe) {
             throw new RuntimeException("无法打开附件", ioe);
         }
+*/
 
         return DigestUtils.sha1(principalName + ":" + detailsChecksum + ":" + attachmentChecksum);
     }

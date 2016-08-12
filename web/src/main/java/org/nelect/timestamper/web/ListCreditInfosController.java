@@ -32,6 +32,7 @@ public class ListCreditInfosController extends AbstractController {
         else creditInfos = service.findProducts(checkIdOrName, offset, limit);
 
         ModelAndView mav = new ModelAndView("search_kexin");
+        mav.addObject("typeName", "manufacturers".equalsIgnoreCase(type) ? "企业" : "商品");
         mav.addObject("creditInfos", creditInfos);
         mav.addObject("currentQuery", checkIdOrName);
 

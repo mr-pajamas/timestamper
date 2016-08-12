@@ -104,6 +104,7 @@ class CertificateManagerImpl implements CertificateManager {
             return this;
         }
 
+/*
         @Override
         public CertificateUpdater setAttachmentName(String attachmentName) {
             entity.setAttachmentName(attachmentName);
@@ -119,6 +120,13 @@ class CertificateManagerImpl implements CertificateManager {
         @Override
         public CertificateUpdater setAttachmentPath(String attachmentPath) {
             entity.setAttachmentPath(attachmentPath);
+            return this;
+        }
+*/
+
+        @Override
+        public CertificateUpdater setAttachmentId(String attachmentId) {
+            entity.setAttachmentId(attachmentId);
             return this;
         }
 

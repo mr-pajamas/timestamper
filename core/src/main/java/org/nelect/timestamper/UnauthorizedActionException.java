@@ -1,6 +1,5 @@
 package org.nelect.timestamper;
 
-import java.text.MessageFormat;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
@@ -21,14 +20,14 @@ public class UnauthorizedActionException extends TimestamperException {
             .put(Organization.class, "认证企业用户")
             .build();
 
-    private Class<? extends Principal> requiredRole;
+    private Class<? extends Principal>[] requiredRoles;
 
-    public UnauthorizedActionException(Class<? extends Principal> requiredRole) {
-        super(MessageFormat.format("权限不足，需要成为{0}才能进行该操作", ROLE_NAME.get(requiredRole)));
-        this.requiredRole = requiredRole;
+    public UnauthorizedActionException(Class<? extends Principal>[] requiredRoles) {
+        super("权限不足，无法执行该操作");
+        this.requiredRoles = requiredRoles;
     }
 
-    public Class<? extends Principal> getRequiredRole() {
-        return requiredRole;
+    public Class<? extends Principal>[] getRequiredRoles() {
+        return requiredRoles;
     }
 }

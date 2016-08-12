@@ -12,5 +12,5 @@ import org.nelect.timestamper.Principal;
 @Documented
 public @interface Privileged {
 
-    Class<? extends Principal> value() default Principal.class;
+    Class<? extends Principal>[] value() default Principal.class;
 }

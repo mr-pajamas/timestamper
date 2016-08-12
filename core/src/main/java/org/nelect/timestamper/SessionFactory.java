@@ -11,4 +11,6 @@ public interface SessionFactory {
     Session newSession(Principal principal);
 
     Session newSession();
+
+    AdminSession newAdminSession();
 }

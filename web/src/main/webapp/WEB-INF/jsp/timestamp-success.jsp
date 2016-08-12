@@ -34,7 +34,7 @@
   <div class="container">
 
     <p class="lead">恭喜，材料提交成功！目前正在上传到区块链存证，请耐心等待</p>
-    <p>数据指纹：<a href="https://www.blocktrail.com/tBTC/tx/${creditInfo.transactionId}">${creditInfo.digest}</a></p>
+    <p>数据指纹：<a href="${explorerEndpoint}/${creditInfo.transactionId}">${creditInfo.digest}</a></p>
 
     <p><a class="btn btn-lg btn-primary" href="javascript:void(0)" onclick="history.back()" role="button">返回继续上传</a></p>
   </div>

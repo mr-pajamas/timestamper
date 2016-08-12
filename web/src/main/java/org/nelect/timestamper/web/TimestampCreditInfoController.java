@@ -1,12 +1,11 @@
 package org.nelect.timestamper.web;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import javax.validation.Valid;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.nelect.timestamper.Attachment;
+import org.nelect.timestamper.*;
 import org.nelect.timestamper.partner.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +25,36 @@ public class TimestampCreditInfoController extends AbstractController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView timestampCreditInfo(@Valid final CreditInfoForm creditInfoForm,
-                                            @RequestParam("attachment") MultipartFile attachmentFile)
+    public ModelAndView timestampCreditInfo(@Valid final CreditInfoForm creditInfoForm)
         throws IOException {
 
-        if (attachmentFile.isEmpty()) return new ModelAndView("timestamp-credit-info");  // TODO: 需要修改
+        final MultipartFile attachment = creditInfoForm.getAttachment();
 
+        if (attachment.isEmpty()) return new ModelAndView("timestamp-credit-info");  // TODO: 需要修改
+
+        Session session = sessionFactory.newSession();
+
+        AttachmentService attachmentService = session.getAttachmentService();
+
+        final String attachmentId = attachmentService.upload(new AttachmentInput() {
+
+            @Override
+            public String getName() {
+                return FilenameUtils.getName(attachment.getOriginalFilename());
+            }
+
+            @Override
+            public String getContentType() {
+                return attachment.getContentType();
+            }
+
+            @Override
+            public InputStream openStream() throws IOException {
+                return attachment.getInputStream();
+            }
+        });
+
+/*
         final File transferred = new File(timestamperConfig.getProperty("attachment.directory"), idGenerator.generateId())
             .getCanonicalFile();
         FileUtils.forceMkdirParent(transferred);
@@ -39,8 +62,9 @@ public class TimestampCreditInfoController extends AbstractController {
 
         final String attachmentName = FilenameUtils.getName(attachmentFile.getOriginalFilename());
         final String attachmentContentType = attachmentFile.getContentType();
+*/
 
-        CreditworthinessService creditworthinessService = sessionFactory.newSession().getCreditworthinessService();
+        CreditworthinessService creditworthinessService = session.getCreditworthinessService();
 
         CreditInfoInput input = new CreditInfoInput() {
 
@@ -59,6 +83,7 @@ public class TimestampCreditInfoController extends AbstractController {
                 return creditInfoForm.getDetails();
             }
 
+/*
             @Override
             public Attachment getAttachment() {
                 return new Attachment() {
@@ -78,6 +103,12 @@ public class TimestampCreditInfoController extends AbstractController {
                         return transferred;
                     }
                 };
+            }
+*/
+
+            @Override
+            public String getAttachmentId() {
+                return attachmentId;
             }
 
             @Override

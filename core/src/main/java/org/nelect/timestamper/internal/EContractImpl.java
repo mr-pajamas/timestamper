@@ -2,7 +2,6 @@ package org.nelect.timestamper.internal;
 
 import java.util.Date;
 
-import org.nelect.timestamper.Attachment;
 import org.nelect.timestamper.internal.persistence.EContractEntity;
 import org.nelect.timestamper.partner.EContract;
 
@@ -37,8 +36,15 @@ public class EContractImpl implements EContract {
         return entity.getPrincipal();
     }
 
+/*
     @Override
     public Attachment getAttachment() {
+        return null;
+    }
+*/
+
+    @Override
+    public String getAttachmentId() {
         return null;
     }
 

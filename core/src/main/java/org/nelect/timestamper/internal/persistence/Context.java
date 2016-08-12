@@ -8,13 +8,21 @@ package org.nelect.timestamper.internal.persistence;
  */
 public interface Context extends Transactional {
 
+    AttachmentManager getAttachmentManager();
+
     UserManager getUserManager();
+
+    IndividualInfoManager getIndividualInfoManager();
+
+    OrganizationInfoManager getOrganizationInfoManager();
 
     CertificateManager getCertificateManager();
 
     CreditInfoManager getCreditInfoManager();
 
     EContractManager getEContractManager();
+
+    EInvoiceManager getEInvoiceManager();
 
     MobileVerificationManager getMobileVerificationManager();
 

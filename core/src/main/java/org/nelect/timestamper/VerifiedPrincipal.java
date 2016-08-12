@@ -6,4 +6,8 @@ package org.nelect.timestamper;
 public interface VerifiedPrincipal extends Principal {
 
     String getName();
+
+    int getCertificateCount();
+
+    int getBalance();
 }

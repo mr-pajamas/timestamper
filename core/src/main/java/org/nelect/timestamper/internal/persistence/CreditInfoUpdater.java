@@ -17,11 +17,15 @@ public interface CreditInfoUpdater extends Updater<CreditInfoEntity> {
 
     CreditInfoUpdater setRegistrationTime(Date registrationTime);
 
+/*
     CreditInfoUpdater setAttachmentName(String attachmentName);
 
     CreditInfoUpdater setAttachmentContentType(String attachmentContentType);
 
     CreditInfoUpdater setAttachmentPath(String attachmentPath);
+*/
+
+    CreditInfoUpdater setAttachmentId(String attachmentId);
 
     CreditInfoUpdater setDigest(String digest);
 

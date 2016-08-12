@@ -11,5 +11,7 @@ public interface EContractService {
 
     EContract findEContractByCheckId(String checkId);
 
+    EContract findEContractByCertNumber(String certNumber);
+
     EContract findEContractByChecksum(String checksum);
 }

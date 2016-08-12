@@ -1,5 +1,7 @@
 package org.nelect.timestamper.web;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Created by Michael on 2016/6/6.
  */
@@ -13,6 +15,7 @@ public class CreditInfoForm {
     private String checkId;
     private String name;
     private String details;
+    private MultipartFile attachment;
 
     private String principalName;
 
@@ -46,6 +49,14 @@ public class CreditInfoForm {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public MultipartFile getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(MultipartFile attachment) {
+        this.attachment = attachment;
     }
 
     public String getPrincipalName() {

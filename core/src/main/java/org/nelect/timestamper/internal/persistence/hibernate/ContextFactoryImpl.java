@@ -16,6 +16,7 @@ public class ContextFactoryImpl implements ContextFactory {
 
     public ContextFactoryImpl() {
         sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build())
+            .addResource("org/nelect/timestamper/internal/persistence/hibernate/attachment.hbm.xml")
             .addResource("org/nelect/timestamper/internal/persistence/hibernate/user.hbm.xml")
             .addResource("org/nelect/timestamper/internal/persistence/hibernate/certificate.hbm.xml")
             .addResource("org/nelect/timestamper/internal/persistence/hibernate/credit-info.hbm.xml")

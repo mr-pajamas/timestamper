@@ -14,20 +14,30 @@ class ContextImpl implements Context {
     private Session session;
     private boolean inTransaction = false;
 
+    private final AttachmentManager attachmentManager;
+
     private final UserManager userManager;
+    private final IndividualInfoManager individualInfoManager;
+    private final OrganizationInfoManager organizationInfoManager;
     private final CertificateManager certificateManager;
     private final CreditInfoManager creditInfoManager;
     private final EContractManager eContractManager;
+    private final EInvoiceManager eInvoiceManager;
     private final MobileVerificationManager mobileVerificationManager;
     private final EmailVerificationManager emailVerificationManager;
 
     ContextImpl(ContextFactoryImpl contextFactory) {
         this.contextFactory = contextFactory;
 
+        attachmentManager = new AttachmentManagerImpl(this);
+
         userManager = new UserManagerImpl(this);
+        individualInfoManager = new IndividualInfoManagerImpl(this);
+        organizationInfoManager = new OrganizationInfoManagerImpl(this);
         certificateManager = new CertificateManagerImpl(this);
         creditInfoManager = new CreditInfoManagerImpl(this);
         eContractManager = new EContractManagerImpl(this);
+        eInvoiceManager = new EInvoiceManagerImpl(this);
         mobileVerificationManager = new MobileVerificationManagerImpl(this);
         emailVerificationManager = new EmailVerificationManagerImpl(this);
     }
@@ -75,8 +85,23 @@ class ContextImpl implements Context {
     }
 
     @Override
+    public AttachmentManager getAttachmentManager() {
+        return attachmentManager;
+    }
+
+    @Override
     public UserManager getUserManager() {
         return userManager;
+    }
+
+    @Override
+    public IndividualInfoManager getIndividualInfoManager() {
+        return individualInfoManager;
+    }
+
+    @Override
+    public OrganizationInfoManager getOrganizationInfoManager() {
+        return organizationInfoManager;
     }
 
     @Override
@@ -92,6 +117,11 @@ class ContextImpl implements Context {
     @Override
     public EContractManager getEContractManager() {
         return eContractManager;
+    }
+
+    @Override
+    public EInvoiceManager getEInvoiceManager() {
+        return eInvoiceManager;
     }
 
     @Override

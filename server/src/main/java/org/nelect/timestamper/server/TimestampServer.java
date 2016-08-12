@@ -33,7 +33,7 @@ public final class TimestampServer {
     private EventLoopGroup workerGroup;
     private Channel serverChannel;
 
-    private TestNetTimestamper timestamper;
+    private TimestamperImpl timestamper;
 
     public TimestampServer(int port, Properties config) {
         this.port = port;
@@ -41,7 +41,8 @@ public final class TimestampServer {
     }
 
     public void start() {
-        timestamper = new TestNetTimestamper(new File(config.getProperty("wallet.location")),
+        timestamper = new TimestamperImpl("testnet".equalsIgnoreCase(config.getProperty("wallet.network")),
+            new File(config.getProperty("wallet.location")),
             config.getProperty("wallet.prefix"));
 
         bossGroup = new NioEventLoopGroup(1);

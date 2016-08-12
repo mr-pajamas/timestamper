@@ -11,9 +11,10 @@
     <property name="title" not-null="true" />
     <property name="principalId" not-null="true" />
     <property name="registrationTime" column="registration_time" type="timestamp" />
-    <property name="attachmentName" column="attachment_name" not-null="true" />
+<!--    <property name="attachmentName" column="attachment_name" not-null="true" />
     <property name="attachmentContentType" column="attachment_content_type" not-null="true" />
-    <property name="attachmentPath" column="attachment_path" not-null="true" />
+    <property name="attachmentPath" column="attachment_path" not-null="true" />-->
+    <property name="attachmentId" column="attachment_id" not-null="true" />
     <property name="digest" not-null="true" unique="true" />
     <property name="transactionId" column="transaction_id" unique="true" not-null="true" />
     <property name="confident" />

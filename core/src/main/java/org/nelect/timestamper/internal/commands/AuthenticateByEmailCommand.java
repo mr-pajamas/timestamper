@@ -39,6 +39,6 @@ public class AuthenticateByEmailCommand implements Command<Principal> {
 
         if (!userEntity.getPassword().equals(password)) throw new AuthenticationException();
 
-        return new PrincipalImpl(userEntity);
+        return new PrincipalBuilder(userEntity).build();
     }
 }

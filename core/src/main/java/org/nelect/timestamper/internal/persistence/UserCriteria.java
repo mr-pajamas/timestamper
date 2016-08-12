@@ -5,7 +5,9 @@ package org.nelect.timestamper.internal.persistence;
  */
 public interface UserCriteria<C extends UserCriteria<C>> {
 
-    C verificationTimeExists();
+    C identified(boolean individualOrOrganization);
+
+    C verificationTimeExists(boolean exists);
 
     C orderByCreationTime(boolean desc);
 }

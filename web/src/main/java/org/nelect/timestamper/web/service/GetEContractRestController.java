@@ -24,6 +24,30 @@ public class GetEContractRestController extends AbstractRestController {
         return new EContractModel(eContract);
     }
 
+    @RequestMapping(method = RequestMethod.GET, params = "certNumber")
+    public EContractModel getEContractByCertNumber(@RequestParam String certNumber) {
+        EContractService eContractService = sessionFactory.newSession().getEContractService();
+
+        EContract eContract = eContractService.findEContractByCertNumber(certNumber);
+
+        if (eContract == null) throw new EContractNotFoundException();
+        if (!eContract.isConfident()) throw new EContractNotConfidentException();
+
+        return new EContractModel(eContract);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, params = "checksum")
+    public EContractModel getEContractByChecksum(@RequestParam String checksum) {
+        EContractService eContractService = sessionFactory.newSession().getEContractService();
+
+        EContract eContract = eContractService.findEContractByChecksum(checksum);
+
+        if (eContract == null) throw new EContractNotFoundException();
+        if (!eContract.isConfident()) throw new EContractNotConfidentException();
+
+        return new EContractModel(eContract);
+    }
+
     @ExceptionHandler(EContractNotFoundException.class)
     public ResponseEntity<ErrorModel> handleEContractNotFoundException() {
         ErrorModel model = new ErrorModelBuilder("040600").build();

@@ -32,6 +32,11 @@ public class EContractServiceImpl implements EContractService {
     }
 
     @Override
+    public EContract findEContractByCertNumber(String certNumber) {
+        return executor.execute(new FindEContractByCertNumberCommand(certNumber), contextFactory.newCommandContext());
+    }
+
+    @Override
     public EContract findEContractByChecksum(String checksum) {
         return executor.execute(new FindEContractByChecksumCommand(checksum), contextFactory.newCommandContext());
     }

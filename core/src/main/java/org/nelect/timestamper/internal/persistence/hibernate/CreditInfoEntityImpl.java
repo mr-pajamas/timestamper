@@ -17,9 +17,10 @@ class CreditInfoEntityImpl implements CreditInfoEntity {
     private String name;
     private String principal;
     private Date registrationTime;
-    private String attachmentName;
+/*    private String attachmentName;
     private String attachmentContentType;
-    private String attachmentPath;
+    private String attachmentPath;*/
+    private String attachmentId;
     private String digest;
     private String details;
     private String transactionId;
@@ -79,6 +80,7 @@ class CreditInfoEntityImpl implements CreditInfoEntity {
         this.registrationTime = registrationTime;
     }
 
+/*
     @Override
     public String getAttachmentName() {
         return attachmentName;
@@ -104,6 +106,16 @@ class CreditInfoEntityImpl implements CreditInfoEntity {
 
     void setAttachmentPath(String attachmentPath) {
         this.attachmentPath = attachmentPath;
+    }
+*/
+
+    @Override
+    public String getAttachmentId() {
+        return attachmentId;
+    }
+
+    public void setAttachmentId(String attachmentId) {
+        this.attachmentId = attachmentId;
     }
 
     @Override
@@ -156,10 +168,7 @@ class CreditInfoEntityImpl implements CreditInfoEntity {
         if (!principal.equals(that.principal)) return false;
         if (registrationTime != null ? !registrationTime.equals(that.registrationTime) : that.registrationTime != null)
             return false;
-        if (!attachmentName.equals(that.attachmentName)) return false;
-        if (!attachmentContentType.equals(that.attachmentContentType))
-            return false;
-        if (!attachmentPath.equals(that.attachmentPath)) return false;
+        if (!attachmentId.equals(that.attachmentId)) return false;
         if (!digest.equals(that.digest)) return false;
         if (!details.equals(that.details)) return false;
         if (!transactionId.equals(that.transactionId)) return false;
@@ -175,9 +184,7 @@ class CreditInfoEntityImpl implements CreditInfoEntity {
         result = 31 * result + name.hashCode();
         result = 31 * result + principal.hashCode();
         result = 31 * result + (registrationTime != null ? registrationTime.hashCode() : 0);
-        result = 31 * result + attachmentName.hashCode();
-        result = 31 * result + attachmentContentType.hashCode();
-        result = 31 * result + attachmentPath.hashCode();
+        result = 31 * result + attachmentId.hashCode();
         result = 31 * result + digest.hashCode();
         result = 31 * result + details.hashCode();
         result = 31 * result + transactionId.hashCode();

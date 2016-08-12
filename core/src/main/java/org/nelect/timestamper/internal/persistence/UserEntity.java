@@ -17,5 +17,19 @@ public interface UserEntity extends Entity<String> {
 
     Date getCreationTime();
 
+    IdentityType getIdentityType();
+
     Date getVerificationTime();
+
+    String getVerificationFailReasons();
+
+    Integer getCertificateCount();
+
+    Integer getBalance();
+
+    enum IdentityType {
+        UNIDENTIFIED,
+        INDIVIDUAL,
+        ORGANIZATION
+    }
 }

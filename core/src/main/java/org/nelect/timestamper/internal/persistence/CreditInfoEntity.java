@@ -17,11 +17,14 @@ public interface CreditInfoEntity extends Entity<String> {
 
     String getDetails();
 
+/*
     String getAttachmentName();
 
     String getAttachmentContentType();
 
     String getAttachmentPath();
+*/
+    String getAttachmentId();
 
     String getDigest();
 

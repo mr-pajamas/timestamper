@@ -17,10 +17,30 @@
     <property name="prefix" value="/WEB-INF/jsp/" />
     <property name="suffix" value=".jsp" />
   </bean>
+  
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <mvc:exclude-mapping path="/admin/**" />
+      <bean class="org.nelect.timestamper.web.IdentityInterceptor" />
+    </mvc:interceptor>
+    <mvc:interceptor>
+      <mvc:mapping path="/admin/**" />
+      <mvc:exclude-mapping path="/admin/login" />
+      <bean class="org.nelect.timestamper.web.admin.AdminInterceptor" />
+    </mvc:interceptor>
+  </mvc:interceptors>
 
   <mvc:view-controller path="/" view-name="index"/>
   <!--<mvc:view-controller path="/timestamp/credit-info" view-name="timestamp-credit-info" />-->
   <mvc:view-controller path="/success" view-name="timestamp-success" status-code="202" />
+  <mvc:view-controller path="/faq" view-name="qa" />
+  <mvc:view-controller path="/about-us" view-name="about_us" />
+
+  <mvc:view-controller path="/my-account" view-name="account_info" />
+  <mvc:view-controller path="/detail-kexin" view-name="detail_kexin" />
+
+  <mvc:view-controller path="/admin/dashboard" view-name="admin-dashboard" />
 
   <mvc:resources mapping="/**" location="/static/" />
 

@@ -62,6 +62,7 @@ public class NewEmailUserCommand implements Command<Principal> {
             .setEmail(email)
             .setPassword(password)
             .setCreationTime(new Date())
+            .setIdentityType(UserEntity.IdentityType.UNIDENTIFIED)
             .save();
 
         return new PrincipalImpl(userEntity);

@@ -116,6 +116,7 @@ class CreditInfoManagerImpl implements CreditInfoManager {
             return this;
         }
 
+/*
         @Override
         public CreditInfoUpdater setAttachmentName(String attachmentName) {
             entity.setAttachmentName(attachmentName);
@@ -131,6 +132,13 @@ class CreditInfoManagerImpl implements CreditInfoManager {
         @Override
         public CreditInfoUpdater setAttachmentPath(String attachmentPath) {
             entity.setAttachmentPath(attachmentPath);
+            return this;
+        }
+*/
+
+        @Override
+        public CreditInfoUpdater setAttachmentId(String attachmentId) {
+            entity.setAttachmentId(attachmentId);
             return this;
         }
 

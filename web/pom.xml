@@ -91,6 +91,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.tika</groupId>
+      <artifactId>tika-core</artifactId>
+      <version>1.13</version>
+    </dependency>
+    <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>timestamper-core</artifactId>
       <version>${project.version}</version>

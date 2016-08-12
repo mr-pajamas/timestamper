@@ -37,7 +37,8 @@ public class SignInController extends AbstractController {
             principal = accountService.authenticateByEmail(email, password);
         }
 
-        webRequest.setAttribute("principal", principal, RequestAttributes.SCOPE_GLOBAL_SESSION);
+        webRequest.setAttribute("principal", new DiscriminatedPrincipal(principal),
+            RequestAttributes.SCOPE_GLOBAL_SESSION);
 
         return "redirect:/";
     }

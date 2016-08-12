@@ -1,0 +1,52 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%@ include file="head.jsp" %>
+    <title>企业信息审核中 - 存证通可信数据保全服务平台</title>
+</head>
+<body>
+<div class="center-block body-wrapper">
+
+    <%@ include file="header.jsp" %>
+<div style="width: 500px;" class="center-block with-padding">
+
+    <h1 class="clearfix text-info"><i class="fa fa-clock-o fa-3x pull-left" aria-hidden="true"></i>企业信息审核中<br><small>提交审核后，预计2个工作日内完成审核<br>请耐心等待</small></h1>
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading" style="height: 40px">企业信息</div>
+        <ul class="list-group">
+            <li class="list-group-item clearfix">
+                <h4 class="list-group-item-heading col-md-3">企业名称</h4>
+                <p class="list-group-item-text text-muted col-md-9">${principal.value.name}</p>
+            </li>
+            <li class="list-group-item clearfix">
+                <h4 class="list-group-item-heading col-md-3">工商注册号</h4>
+                <p class="list-group-item-text text-muted col-md-9">${principal.value.registrationNumber}</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</div>
+<div class="with-padding footer center-block">
+    <div class="copyleft">
+        <p>版权所有&#169;电子商务交易技术国家工程实验室 京ICP备15039571号-2</p>
+    </div>
+</div>
+<script src="<s:url value='/dist/lib/jquery/jquery.js' />"></script>
+<script src="<s:url value='/dist/js/zui.min.js' />"></script>
+
+<script>
+    $(function(){
+        var height = document.documentElement.clientHeight;
+        $('.body-wrapper').css("min-height", (height - 60)+"px");
+        $( window ).resize(function() {
+            var height = document.documentElement.clientHeight
+            $('.body-wrapper').css("min-height", (height - 60)+"px");
+        });
+    })
+</script>
+</body>
+</html>

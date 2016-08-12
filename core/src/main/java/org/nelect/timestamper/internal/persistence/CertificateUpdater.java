@@ -13,11 +13,15 @@ public interface CertificateUpdater extends Updater<CertificateEntity> {
 
     CertificateUpdater setRegistrationTime(Date registrationTime);
 
+/*
     CertificateUpdater setAttachmentName(String attachmentName);
 
     CertificateUpdater setAttachmentContentType(String attachmentContentType);
 
     CertificateUpdater setAttachmentPath(String attachmentPath);
+*/
+
+    CertificateUpdater setAttachmentId(String attachmentId);
 
     CertificateUpdater setDigest(String digest);
 

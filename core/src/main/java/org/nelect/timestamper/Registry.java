@@ -9,7 +9,9 @@ public interface Registry {
 
     String getPrincipalName();
 
-    Attachment getAttachment();
+    //Attachment getAttachment();
+
+    String getAttachmentId();
 
     String getDigest();
 

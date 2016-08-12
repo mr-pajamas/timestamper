@@ -34,4 +34,6 @@ public interface CommandContext {
     Properties getConfig();
 
     Principal getPrincipal();
+
+    boolean isAdmin();
 }

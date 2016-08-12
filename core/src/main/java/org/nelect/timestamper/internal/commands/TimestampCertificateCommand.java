@@ -64,9 +64,10 @@ public class TimestampCertificateCommand implements Command<Certificate> {
         CertificateEntity certificateEntity = certificateManager.newUpdater()
             .setTitle(input.getTitle())
             .setPrincipalId(context.getPrincipal().getId())
-            .setAttachmentName(input.getAttachment().getName())
-            .setAttachmentContentType(input.getAttachment().getContentType())
-            .setAttachmentPath(input.getAttachment().getFile().getAbsolutePath())
+//            .setAttachmentName(input.getAttachment().getName())
+//            .setAttachmentContentType(input.getAttachment().getContentType())
+//            .setAttachmentPath(input.getAttachment().getFile().getAbsolutePath())
+            .setAttachmentId(input.getAttachmentId())
             .setDigest(Hex.encodeHexString(digest))
             .setTransactionId(transactionId)
             .save();

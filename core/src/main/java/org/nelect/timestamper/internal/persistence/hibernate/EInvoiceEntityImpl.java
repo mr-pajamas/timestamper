@@ -15,10 +15,11 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
     private String principal;
     private String certNumber;
     private Date registrationTime;
-    private String attachmentName;
-    private String attachmentContentType;
-    private String attachmentPath;
-    private String attachmentChecksum;
+//    private String attachmentName;
+//    private String attachmentContentType;
+//    private String attachmentPath;
+//    private String attachmentChecksum;
+    private String checksum;
     private String digest;
     private String transactionId;
     private Boolean confident;
@@ -68,6 +69,7 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
         this.registrationTime = registrationTime;
     }
 
+    /*
     @Override
     public String getAttachmentName() {
         return attachmentName;
@@ -102,6 +104,16 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
 
     void setAttachmentChecksum(String attachmentChecksum) {
         this.attachmentChecksum = attachmentChecksum;
+    }
+*/
+
+    @Override
+    public String getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 
     @Override
@@ -144,11 +156,7 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
         if (!certNumber.equals(that.certNumber)) return false;
         if (registrationTime != null ? !registrationTime.equals(that.registrationTime) : that.registrationTime != null)
             return false;
-        if (!attachmentName.equals(that.attachmentName)) return false;
-        if (!attachmentContentType.equals(that.attachmentContentType))
-            return false;
-        if (!attachmentPath.equals(that.attachmentPath)) return false;
-        if (!attachmentChecksum.equals(that.attachmentChecksum)) return false;
+        if (!checksum.equals(that.checksum)) return false;
         if (!digest.equals(that.digest)) return false;
         if (!transactionId.equals(that.transactionId)) return false;
         return confident != null ? confident.equals(that.confident) : that.confident == null;
@@ -162,10 +170,7 @@ class EInvoiceEntityImpl implements EInvoiceEntity {
         result = 31 * result + principal.hashCode();
         result = 31 * result + certNumber.hashCode();
         result = 31 * result + (registrationTime != null ? registrationTime.hashCode() : 0);
-        result = 31 * result + attachmentName.hashCode();
-        result = 31 * result + attachmentContentType.hashCode();
-        result = 31 * result + attachmentPath.hashCode();
-        result = 31 * result + attachmentChecksum.hashCode();
+        result = 31 * result + checksum.hashCode();
         result = 31 * result + digest.hashCode();
         result = 31 * result + transactionId.hashCode();
         result = 31 * result + (confident != null ? confident.hashCode() : 0);

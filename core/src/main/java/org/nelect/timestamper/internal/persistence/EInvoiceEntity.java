@@ -13,6 +13,7 @@ public interface EInvoiceEntity extends Entity<String> {
 
     String getCertNumber();
 
+    /*
     String getAttachmentName();
 
     String getAttachmentContentType();
@@ -20,6 +21,9 @@ public interface EInvoiceEntity extends Entity<String> {
     String getAttachmentPath();
 
     String getAttachmentChecksum();
+*/
+
+    String getChecksum();
 
     String getDigest();
 
